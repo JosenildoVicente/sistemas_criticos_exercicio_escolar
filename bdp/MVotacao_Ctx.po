@@ -1,0 +1,14 @@
+THEORY ProofList
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((1..3)*{ESTADO}): FIN(NATURAL*{ESTADO}) & not(((1..3)*{ESTADO}) = {}) & ((1..4)*{CPFs}): FIN(NATURAL*{CPFs}) & not(((1..4)*{CPFs}) = {}) & ((1..2)*{ZONAS}): FIN(NATURAL*{ZONAS}) & not(((1..2)*{ZONAS}) = {});
+((1..3)*{ESTADO}): FIN(NATURAL*{ESTADO}) & not(((1..3)*{ESTADO}) = {})
+END
+&
+THEORY EnumerateX IS
+CPFs == {cpf1,cpf2,cpf3,indefinido};
+ESTADO == {preparacao,votacao,apuracao};
+ZONAS == {zona1,zona2}
+END

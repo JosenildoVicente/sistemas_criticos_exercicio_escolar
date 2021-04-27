@@ -1,0 +1,109 @@
+<Machine name='MVotacao_Ctx' type='abstraction'>
+<Sets>
+<Attr>
+<Pos l='7' c='1' s='4'/>
+</Attr>
+<Set>
+<Id value='ESTADO' typref='1079407803'>
+<Attr>
+<Pos l='8' c='5' s='6'/>
+</Attr>
+</Id>
+<Enumerated_Values>
+<Id value='preparacao' typref='1518859038'>
+<Attr>
+<Pos l='9' c='9' s='10'/>
+</Attr>
+</Id>
+<Id value='votacao' typref='1518859038'>
+<Attr>
+<Pos l='10' c='9' s='7'/>
+</Attr>
+</Id>
+<Id value='apuracao' typref='1518859038'>
+<Attr>
+<Pos l='11' c='9' s='8'/>
+</Attr>
+</Id>
+</Enumerated_Values>
+</Set>
+<Set>
+<Id value='CPFs' typref='3123498095'>
+<Attr>
+<Pos l='13' c='5' s='4'/>
+</Attr>
+</Id>
+<Enumerated_Values>
+<Id value='cpf1' typref='425601002'>
+<Attr>
+<Pos l='14' c='9' s='4'/>
+</Attr>
+</Id>
+<Id value='cpf2' typref='425601002'>
+<Attr>
+<Pos l='15' c='9' s='4'/>
+</Attr>
+</Id>
+<Id value='cpf3' typref='425601002'>
+<Attr>
+<Pos l='16' c='9' s='4'/>
+</Attr>
+</Id>
+<Id value='indefinido' typref='425601002'>
+<Attr>
+<Pos l='17' c='9' s='10'/>
+</Attr>
+</Id>
+</Enumerated_Values>
+</Set>
+<Set>
+<Id value='ZONAS' typref='3411217126'>
+<Attr>
+<Pos l='19' c='5' s='5'/>
+</Attr>
+</Id>
+<Enumerated_Values>
+<Id value='zona1' typref='2665920861'>
+<Attr>
+<Pos l='20' c='9' s='5'/>
+</Attr>
+</Id>
+<Id value='zona2' typref='2665920861'>
+<Attr>
+<Pos l='21' c='9' s='5'/>
+</Attr>
+</Id>
+</Enumerated_Values>
+</Set>
+</Sets>
+<Initialisation>
+<Skip/>
+</Initialisation>
+<TypeInfos>
+<Type id='1079407803'>
+<Unary_Exp op='POW'>
+<Id value='ESTADO'/>
+</Unary_Exp>
+</Type>
+<Type id='1518859038'>
+<Id value='ESTADO'/>
+</Type>
+<Type id='3123498095'>
+<Unary_Exp op='POW'>
+<Id value='CPFs'/>
+</Unary_Exp>
+</Type>
+<Type id='425601002'>
+<Id value='CPFs'/>
+</Type>
+<Type id='3411217126'>
+<Unary_Exp op='POW'>
+<Id value='ZONAS'/>
+</Unary_Exp>
+</Type>
+<Type id='2665920861'>
+<Id value='ZONAS'/>
+</Type>
+</TypeInfos>
+
+</Machine>

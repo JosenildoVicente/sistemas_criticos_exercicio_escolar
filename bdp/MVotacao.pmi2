@@ -1,0 +1,112 @@
+﻿THEORY BalanceX IS
+  MVotacao,30,0,0,23,2,2,0;
+  Initialisation,8,0,0,8,0,0,0;
+  adicionar_eleitor,6,0,0,4,2,0,0;
+  remover_eleitor,16,0,0,11,0,2,0
+END
+&
+THEORY ProofState IS
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(2);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(2);
+  Proved(0);
+  Proved(0);
+  Proved(1);
+  Proved(0);
+  Proved(1);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0)
+END
+&
+THEORY MethodList IS
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr
+END
+&
+THEORY PassList IS
+  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(2),(?;0;1);
+  Force(0),?;
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(2),(?;0;1);
+  Force(0),?;
+  Force(0),?;
+  Force(1),(?;0);
+  Force(0),?;
+  Force(1),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?
+END
+&
+THEORY ManForms 
+END
+&
+THEORY Version IS
+  PRVersion("svn")(CLT == "svn")
+END

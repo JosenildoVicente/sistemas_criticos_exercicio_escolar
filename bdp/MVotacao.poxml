@@ -1,0 +1,3895 @@
+<Proof_Obligations>
+<Define name="B definitions">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Id value="NAT"/>
+<Binary_Exp op="..">
+<Integer_Literal value="0"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Id value="INT"/>
+<Binary_Exp op="..">
+<Id value="MININT"/>
+<Id value="MAXINT"/>
+</Binary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Define>
+<Define name="ctx">
+<Attr>
+<Pos s="4" l="7" c="1"/>
+</Attr>
+<Set>
+<Id typref="1079407803" value="ESTADO" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:1:1">
+<Attr>
+<Pos s="6" l="8" c="5"/>
+</Attr>
+</Id>
+<Enumerated_Values>
+<Id typref="1518859038" value="preparacao" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:1:2:1">
+<Attr>
+<Pos s="10" l="9" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="votacao" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:1:2:2">
+<Attr>
+<Pos s="7" l="10" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="apuracao" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:1:2:3">
+<Attr>
+<Pos s="8" l="11" c="9"/>
+</Attr>
+</Id>
+</Enumerated_Values>
+</Set>
+<Set>
+<Id typref="3123498095" value="CPFs" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:2:1">
+<Attr>
+<Pos s="4" l="13" c="5"/>
+</Attr>
+</Id>
+<Enumerated_Values>
+<Id typref="425601002" value="cpf1" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:2:2:1">
+<Attr>
+<Pos s="4" l="14" c="9"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="cpf2" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:2:2:2">
+<Attr>
+<Pos s="4" l="15" c="9"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="cpf3" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:2:2:3">
+<Attr>
+<Pos s="4" l="16" c="9"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:2:2:4">
+<Attr>
+<Pos s="10" l="17" c="9"/>
+</Attr>
+</Id>
+</Enumerated_Values>
+</Set>
+<Set>
+<Id typref="3411217126" value="ZONAS" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:3:1">
+<Attr>
+<Pos s="5" l="19" c="5"/>
+</Attr>
+</Id>
+<Enumerated_Values>
+<Id typref="2665920861" value="zona1" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:3:2:1">
+<Attr>
+<Pos s="5" l="20" c="9"/>
+</Attr>
+</Id>
+<Id typref="2665920861" value="zona2" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:1:3:2:2">
+<Attr>
+<Pos s="5" l="21" c="9"/>
+</Attr>
+</Id>
+</Enumerated_Values>
+</Set>
+</Define>
+<Define name="seext"/>
+<Define name="lprp"/>
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="inv">
+<Attr>
+<Pos s="9" l="19" c="1"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((estado) : (ESTADO))">
+<Attr>
+<Pos s="1" l="20" c="12"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:1">
+<Attr>
+<Pos s="6" l="20" c="5"/>
+</Attr>
+</Id>
+<Id typref="1079407803" value="ESTADO" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:2">
+<Attr>
+<Pos s="6" l="20" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((eleitores) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="21" c="17"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:1">
+<Attr>
+<Pos s="9" l="21" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="21" c="19"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:2:1">
+<Attr>
+<Pos s="4" l="21" c="23"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((candidatos) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="22" c="18"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:1">
+<Attr>
+<Pos s="10" l="22" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="22" c="20"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:2:1">
+<Attr>
+<Pos s="4" l="22" c="24"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((local) : (((eleitores) +-&gt; (ZONAS))))">
+<Attr>
+<Pos s="1" l="23" c="13"/>
+</Attr>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:1">
+<Attr>
+<Pos s="5" l="23" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="357329816">
+<Attr>
+<Pos s="3" l="23" c="25"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:1">
+<Attr>
+<Pos s="9" l="23" c="15"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:2">
+<Attr>
+<Pos s="5" l="23" c="29"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((votos) : (((candidatos) +-&gt; (NAT))))">
+<Attr>
+<Pos s="1" l="24" c="13"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:1">
+<Attr>
+<Pos s="5" l="24" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3855221605">
+<Attr>
+<Pos s="3" l="24" c="26"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:1">
+<Attr>
+<Pos s="10" l="24" c="15"/>
+</Attr>
+</Id>
+<Id typref="3603043417" value="NAT" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:2">
+<Attr>
+<Pos s="3" l="24" c="30"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((registro) : (((eleitores) +-&gt; (BOOL))))">
+<Attr>
+<Pos s="1" l="25" c="16"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:1">
+<Attr>
+<Pos s="8" l="25" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3309974691">
+<Attr>
+<Pos s="3" l="25" c="28"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:1">
+<Attr>
+<Pos s="9" l="25" c="18"/>
+</Attr>
+</Id>
+<Id typref="4282494527" value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:2">
+<Attr>
+<Pos s="4" l="25" c="32"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Quantified_Pred type="!" initialTag="!(aa).(((((aa) : (eleitores))) =&gt; (not(aa = indefinido))))">
+<Attr>
+<Pos s="1" l="26" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:1:1">
+<Attr>
+<Pos s="2" l="26" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="26" c="31"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="26" c="19"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:1">
+<Attr>
+<Pos s="2" l="26" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:2">
+<Attr>
+<Pos s="9" l="26" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="26" c="37"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:1">
+<Attr>
+<Pos s="2" l="26" c="34"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:2">
+<Attr>
+<Pos s="10" l="26" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ee).(((((ee) : (candidatos))) =&gt; (not(ee = indefinido))))">
+<Attr>
+<Pos s="1" l="27" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:1:1">
+<Attr>
+<Pos s="2" l="27" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="27" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="27" c="19"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:1">
+<Attr>
+<Pos s="2" l="27" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:2">
+<Attr>
+<Pos s="10" l="27" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="27" c="38"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:1">
+<Attr>
+<Pos s="2" l="27" c="35"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:2">
+<Attr>
+<Pos s="10" l="27" c="41"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ii).(((((ii) : (candidatos))) =&gt; (((ii) : (eleitores)))))">
+<Attr>
+<Pos s="1" l="28" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:1:1">
+<Attr>
+<Pos s="2" l="28" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="28" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="19"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:1">
+<Attr>
+<Pos s="2" l="28" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:2">
+<Attr>
+<Pos s="10" l="28" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="38"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:1">
+<Attr>
+<Pos s="2" l="28" c="35"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:2">
+<Attr>
+<Pos s="9" l="28" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(oo).(((((oo) : (ran(registro))) &amp; ((estado) = (preparacao))) =&gt; (((oo) = (FALSE)))))">
+<Attr>
+<Pos s="1" l="29" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:1:1">
+<Attr>
+<Pos s="2" l="29" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="29" c="57"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="29" c="19"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="29" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="4282494527">
+<Attr>
+<Pos s="3" l="29" c="21"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:2:1">
+<Attr>
+<Pos s="8" l="29" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="44"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="29" c="37"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="29" c="46"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="63"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:1">
+<Attr>
+<Pos s="2" l="29" c="60"/>
+</Attr>
+</Id>
+<Boolean_Literal typref="2043437594" value="FALSE" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:2">
+<Attr>
+<Pos s="5" l="29" c="65"/>
+</Attr>
+</Boolean_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(uu).(((((uu) : (ran(votos))) &amp; ((estado) = (preparacao))) =&gt; (((uu) = (0)))))">
+<Attr>
+<Pos s="1" l="30" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:1:1">
+<Attr>
+<Pos s="2" l="30" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="30" c="54"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="30" c="19"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="30" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="3603043417">
+<Attr>
+<Pos s="3" l="30" c="21"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:2:1">
+<Attr>
+<Pos s="5" l="30" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="41"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="30" c="34"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="30" c="43"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="60"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:1">
+<Attr>
+<Pos s="2" l="30" c="57"/>
+</Attr>
+</Id>
+<Integer_Literal typref="2701647786" value="0" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:2">
+<Attr>
+<Pos s="1" l="30" c="62"/>
+</Attr>
+</Integer_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Define>
+<Define name="ass"/>
+<Define name="cst"/>
+<Proof_Obligation>
+<Comment>Initialisation dans une machine abstraite</Comment>
+<Tag>Initialisation</Tag>
+<Tag>Invariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Sub_Calculus>
+<Nary_Sub op=";">
+<Attr>
+<Pos s="14" l="32" c="1"/>
+</Attr>
+<Nary_Sub op="||">
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:1:1:1">
+<Attr>
+<Pos s="6" l="33" c="5"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:1:2:1">
+<Attr>
+<Pos s="6" l="33" c="5"/>
+</Attr>
+</Id>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:2:1:1">
+<Attr>
+<Pos s="9" l="34" c="8"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<EmptySet typref="3817003670" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:2:2:1">
+<Attr>
+<Pos s="9" l="34" c="8"/>
+</Attr>
+</EmptySet>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:3:1:1">
+<Attr>
+<Pos s="10" l="35" c="8"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<EmptySet typref="3817003670" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:3:2:1">
+<Attr>
+<Pos s="10" l="35" c="8"/>
+</Attr>
+</EmptySet>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:4:1:1">
+<Attr>
+<Pos s="5" l="36" c="8"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<EmptySet typref="3817003670" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:4:2:1">
+<Attr>
+<Pos s="5" l="36" c="8"/>
+</Attr>
+</EmptySet>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:5:1:1">
+<Attr>
+<Pos s="5" l="37" c="8"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<EmptySet typref="3817003670" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:5:2:1">
+<Attr>
+<Pos s="5" l="37" c="8"/>
+</Attr>
+</EmptySet>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:6:1:1">
+<Attr>
+<Pos s="8" l="38" c="8"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<EmptySet typref="3817003670" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:4:1:6:2:1">
+<Attr>
+<Pos s="8" l="38" c="8"/>
+</Attr>
+</EmptySet>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
+</Nary_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Attr>
+<Pos s="9" l="19" c="1"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((estado) : (ESTADO))">
+<Attr>
+<Pos s="1" l="20" c="12"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:1">
+<Attr>
+<Pos s="6" l="20" c="5"/>
+</Attr>
+</Id>
+<Id typref="1079407803" value="ESTADO" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:2">
+<Attr>
+<Pos s="6" l="20" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((eleitores) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="21" c="17"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:1">
+<Attr>
+<Pos s="9" l="21" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="21" c="19"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:2:1">
+<Attr>
+<Pos s="4" l="21" c="23"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((candidatos) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="22" c="18"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:1">
+<Attr>
+<Pos s="10" l="22" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="22" c="20"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:2:1">
+<Attr>
+<Pos s="4" l="22" c="24"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((local) : (((eleitores) +-&gt; (ZONAS))))">
+<Attr>
+<Pos s="1" l="23" c="13"/>
+</Attr>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:1">
+<Attr>
+<Pos s="5" l="23" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="357329816">
+<Attr>
+<Pos s="3" l="23" c="25"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:1">
+<Attr>
+<Pos s="9" l="23" c="15"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:2">
+<Attr>
+<Pos s="5" l="23" c="29"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((votos) : (((candidatos) +-&gt; (NAT))))">
+<Attr>
+<Pos s="1" l="24" c="13"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:1">
+<Attr>
+<Pos s="5" l="24" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3855221605">
+<Attr>
+<Pos s="3" l="24" c="26"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:1">
+<Attr>
+<Pos s="10" l="24" c="15"/>
+</Attr>
+</Id>
+<Id typref="3603043417" value="NAT" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:2">
+<Attr>
+<Pos s="3" l="24" c="30"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((registro) : (((eleitores) +-&gt; (BOOL))))">
+<Attr>
+<Pos s="1" l="25" c="16"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:1">
+<Attr>
+<Pos s="8" l="25" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3309974691">
+<Attr>
+<Pos s="3" l="25" c="28"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:1">
+<Attr>
+<Pos s="9" l="25" c="18"/>
+</Attr>
+</Id>
+<Id typref="4282494527" value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:2">
+<Attr>
+<Pos s="4" l="25" c="32"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Quantified_Pred type="!" initialTag="!(aa).(((((aa) : (eleitores))) =&gt; (not(aa = indefinido))))">
+<Attr>
+<Pos s="1" l="26" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:1:1">
+<Attr>
+<Pos s="2" l="26" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="26" c="31"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="26" c="19"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:1">
+<Attr>
+<Pos s="2" l="26" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:2">
+<Attr>
+<Pos s="9" l="26" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="26" c="37"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:1">
+<Attr>
+<Pos s="2" l="26" c="34"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:2">
+<Attr>
+<Pos s="10" l="26" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ee).(((((ee) : (candidatos))) =&gt; (not(ee = indefinido))))">
+<Attr>
+<Pos s="1" l="27" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:1:1">
+<Attr>
+<Pos s="2" l="27" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="27" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="27" c="19"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:1">
+<Attr>
+<Pos s="2" l="27" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:2">
+<Attr>
+<Pos s="10" l="27" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="27" c="38"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:1">
+<Attr>
+<Pos s="2" l="27" c="35"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:2">
+<Attr>
+<Pos s="10" l="27" c="41"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ii).(((((ii) : (candidatos))) =&gt; (((ii) : (eleitores)))))">
+<Attr>
+<Pos s="1" l="28" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:1:1">
+<Attr>
+<Pos s="2" l="28" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="28" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="19"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:1">
+<Attr>
+<Pos s="2" l="28" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:2">
+<Attr>
+<Pos s="10" l="28" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="38"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:1">
+<Attr>
+<Pos s="2" l="28" c="35"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:2">
+<Attr>
+<Pos s="9" l="28" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(oo).(((((oo) : (ran(registro))) &amp; ((estado) = (preparacao))) =&gt; (((oo) = (FALSE)))))">
+<Attr>
+<Pos s="1" l="29" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:1:1">
+<Attr>
+<Pos s="2" l="29" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="29" c="57"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="29" c="19"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="29" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="4282494527">
+<Attr>
+<Pos s="3" l="29" c="21"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:2:1">
+<Attr>
+<Pos s="8" l="29" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="44"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="29" c="37"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="29" c="46"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="63"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:1">
+<Attr>
+<Pos s="2" l="29" c="60"/>
+</Attr>
+</Id>
+<Boolean_Literal typref="2043437594" value="FALSE" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:2">
+<Attr>
+<Pos s="5" l="29" c="65"/>
+</Attr>
+</Boolean_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(uu).(((((uu) : (ran(votos))) &amp; ((estado) = (preparacao))) =&gt; (((uu) = (0)))))">
+<Attr>
+<Pos s="1" l="30" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:1:1">
+<Attr>
+<Pos s="2" l="30" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="30" c="54"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="30" c="19"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="30" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="3603043417">
+<Attr>
+<Pos s="3" l="30" c="21"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:2:1">
+<Attr>
+<Pos s="5" l="30" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="41"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="30" c="34"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="30" c="43"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="60"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:1">
+<Attr>
+<Pos s="2" l="30" c="57"/>
+</Attr>
+</Id>
+<Integer_Literal typref="2701647786" value="0" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:2">
+<Attr>
+<Pos s="1" l="30" c="62"/>
+</Attr>
+</Integer_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>adicionar_eleitor</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="44" c="16"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:1:1">
+<Attr>
+<Pos s="6" l="44" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:1:2">
+<Attr>
+<Pos s="10" l="44" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="45" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:2:1">
+<Attr>
+<Pos s="3" l="45" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:2:2">
+<Attr>
+<Pos s="4" l="45" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Attr>
+<Pos s="2" l="46" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:3:1">
+<Attr>
+<Pos s="3" l="46" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:3:2">
+<Attr>
+<Pos s="9" l="46" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="47" c="16"/>
+</Attr>
+<Id typref="2665920861" value="zona" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:4:1">
+<Attr>
+<Pos s="4" l="47" c="11"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:4:2">
+<Attr>
+<Pos s="5" l="47" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="48" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:5:1">
+<Attr>
+<Pos s="3" l="48" c="11"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:5:2">
+<Attr>
+<Pos s="10" l="48" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<Nary_Sub op="||">
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:1:1:1">
+<Attr>
+<Pos s="9" l="51" c="8"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="\/" typref="3123498095">
+<Attr>
+<Pos s="9" l="51" c="8"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:1:2:1:1">
+<Attr>
+<Pos s="9" l="51" c="21"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="3123498095">
+<Attr>
+<Pos s="1" l="51" c="34"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:1:2:1:2:1">
+<Attr>
+<Pos s="3" l="51" c="36"/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:2:1:1">
+<Attr>
+<Pos s="5" l="52" c="11"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="\/" typref="4272808321">
+<Attr>
+<Pos s="5" l="52" c="11"/>
+</Attr>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:2:2:1:1">
+<Attr>
+<Pos s="5" l="52" c="20"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="4272808321">
+<Attr>
+<Pos s="1" l="52" c="29"/>
+</Attr>
+<Binary_Exp op="|-&gt;" typref="4163728344">
+<Attr>
+<Pos s="3" l="52" c="35"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:2:2:1:2:1:1">
+<Attr>
+<Pos s="3" l="52" c="31"/>
+</Attr>
+</Id>
+<Id typref="2665920861" value="zona" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:2:2:1:2:1:2">
+<Attr>
+<Pos s="4" l="52" c="39"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:3:1:1">
+<Attr>
+<Pos s="8" l="53" c="11"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="\/" typref="1800599008">
+<Attr>
+<Pos s="8" l="53" c="11"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:3:2:1:1">
+<Attr>
+<Pos s="8" l="53" c="23"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="1800599008">
+<Attr>
+<Pos s="1" l="53" c="35"/>
+</Attr>
+<Binary_Exp op="|-&gt;" typref="4186206435">
+<Attr>
+<Pos s="3" l="53" c="41"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:3:2:1:2:1:1">
+<Attr>
+<Pos s="3" l="53" c="37"/>
+</Attr>
+</Id>
+<Boolean_Literal typref="2043437594" value="FALSE" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:3:1:3:2:1:2:1:2">
+<Attr>
+<Pos s="5" l="53" c="45"/>
+</Attr>
+</Boolean_Literal>
+</Binary_Exp>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Attr>
+<Pos s="9" l="19" c="1"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((estado) : (ESTADO))">
+<Attr>
+<Pos s="1" l="20" c="12"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:1">
+<Attr>
+<Pos s="6" l="20" c="5"/>
+</Attr>
+</Id>
+<Id typref="1079407803" value="ESTADO" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:2">
+<Attr>
+<Pos s="6" l="20" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((eleitores) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="21" c="17"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:1">
+<Attr>
+<Pos s="9" l="21" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="21" c="19"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:2:1">
+<Attr>
+<Pos s="4" l="21" c="23"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((candidatos) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="22" c="18"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:1">
+<Attr>
+<Pos s="10" l="22" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="22" c="20"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:2:1">
+<Attr>
+<Pos s="4" l="22" c="24"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((local) : (((eleitores) +-&gt; (ZONAS))))">
+<Attr>
+<Pos s="1" l="23" c="13"/>
+</Attr>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:1">
+<Attr>
+<Pos s="5" l="23" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="357329816">
+<Attr>
+<Pos s="3" l="23" c="25"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:1">
+<Attr>
+<Pos s="9" l="23" c="15"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:2">
+<Attr>
+<Pos s="5" l="23" c="29"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((votos) : (((candidatos) +-&gt; (NAT))))">
+<Attr>
+<Pos s="1" l="24" c="13"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:1">
+<Attr>
+<Pos s="5" l="24" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3855221605">
+<Attr>
+<Pos s="3" l="24" c="26"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:1">
+<Attr>
+<Pos s="10" l="24" c="15"/>
+</Attr>
+</Id>
+<Id typref="3603043417" value="NAT" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:2">
+<Attr>
+<Pos s="3" l="24" c="30"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((registro) : (((eleitores) +-&gt; (BOOL))))">
+<Attr>
+<Pos s="1" l="25" c="16"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:1">
+<Attr>
+<Pos s="8" l="25" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3309974691">
+<Attr>
+<Pos s="3" l="25" c="28"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:1">
+<Attr>
+<Pos s="9" l="25" c="18"/>
+</Attr>
+</Id>
+<Id typref="4282494527" value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:2">
+<Attr>
+<Pos s="4" l="25" c="32"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Quantified_Pred type="!" initialTag="!(aa).(((((aa) : (eleitores))) =&gt; (not(aa = indefinido))))">
+<Attr>
+<Pos s="1" l="26" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:1:1">
+<Attr>
+<Pos s="2" l="26" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="26" c="31"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="26" c="19"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:1">
+<Attr>
+<Pos s="2" l="26" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:2">
+<Attr>
+<Pos s="9" l="26" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="26" c="37"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:1">
+<Attr>
+<Pos s="2" l="26" c="34"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:2">
+<Attr>
+<Pos s="10" l="26" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ee).(((((ee) : (candidatos))) =&gt; (not(ee = indefinido))))">
+<Attr>
+<Pos s="1" l="27" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:1:1">
+<Attr>
+<Pos s="2" l="27" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="27" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="27" c="19"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:1">
+<Attr>
+<Pos s="2" l="27" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:2">
+<Attr>
+<Pos s="10" l="27" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="27" c="38"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:1">
+<Attr>
+<Pos s="2" l="27" c="35"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:2">
+<Attr>
+<Pos s="10" l="27" c="41"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ii).(((((ii) : (candidatos))) =&gt; (((ii) : (eleitores)))))">
+<Attr>
+<Pos s="1" l="28" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:1:1">
+<Attr>
+<Pos s="2" l="28" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="28" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="19"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:1">
+<Attr>
+<Pos s="2" l="28" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:2">
+<Attr>
+<Pos s="10" l="28" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="38"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:1">
+<Attr>
+<Pos s="2" l="28" c="35"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:2">
+<Attr>
+<Pos s="9" l="28" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(oo).(((((oo) : (ran(registro))) &amp; ((estado) = (preparacao))) =&gt; (((oo) = (FALSE)))))">
+<Attr>
+<Pos s="1" l="29" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:1:1">
+<Attr>
+<Pos s="2" l="29" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="29" c="57"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="29" c="19"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="29" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="4282494527">
+<Attr>
+<Pos s="3" l="29" c="21"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:2:1">
+<Attr>
+<Pos s="8" l="29" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="44"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="29" c="37"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="29" c="46"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="63"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:1">
+<Attr>
+<Pos s="2" l="29" c="60"/>
+</Attr>
+</Id>
+<Boolean_Literal typref="2043437594" value="FALSE" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:2">
+<Attr>
+<Pos s="5" l="29" c="65"/>
+</Attr>
+</Boolean_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(uu).(((((uu) : (ran(votos))) &amp; ((estado) = (preparacao))) =&gt; (((uu) = (0)))))">
+<Attr>
+<Pos s="1" l="30" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:1:1">
+<Attr>
+<Pos s="2" l="30" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="30" c="54"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="30" c="19"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="30" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="3603043417">
+<Attr>
+<Pos s="3" l="30" c="21"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:2:1">
+<Attr>
+<Pos s="5" l="30" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="41"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="30" c="34"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="30" c="43"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="60"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:1">
+<Attr>
+<Pos s="2" l="30" c="57"/>
+</Attr>
+</Id>
+<Integer_Literal typref="2701647786" value="0" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:2">
+<Attr>
+<Pos s="1" l="30" c="62"/>
+</Attr>
+</Integer_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>remover_eleitor</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="59" c="16"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:1:1">
+<Attr>
+<Pos s="6" l="59" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:1:2">
+<Attr>
+<Pos s="10" l="59" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="60" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:2:1">
+<Attr>
+<Pos s="3" l="60" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:2:2">
+<Attr>
+<Pos s="4" l="60" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="61" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:3:1">
+<Attr>
+<Pos s="3" l="61" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:3:2">
+<Attr>
+<Pos s="9" l="61" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="62" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:4:1">
+<Attr>
+<Pos s="3" l="62" c="11"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:4:2">
+<Attr>
+<Pos s="10" l="62" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Sub_Calculus>
+<Nary_Sub op="||">
+<If_Sub elseif="no">
+<Attr>
+<Pos s="2" l="64" c="9"/>
+</Attr>
+<Condition>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="64" c="16"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:1:1:1">
+<Attr>
+<Pos s="3" l="64" c="12"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:1:1:2">
+<Attr>
+<Pos s="10" l="64" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Nary_Sub op="||">
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:2:1:1:1:1">
+<Attr>
+<Pos s="5" l="64" c="34"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="&lt;&lt;|" typref="1474013684">
+<Attr>
+<Pos s="5" l="64" c="34"/>
+</Attr>
+<Nary_Exp op="{" typref="3123498095">
+<Attr>
+<Pos s="1" l="64" c="43"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:2:1:1:2:1:1:1">
+<Attr>
+<Pos s="3" l="64" c="45"/>
+</Attr>
+</Id>
+</Nary_Exp>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:2:1:1:2:1:2">
+<Attr>
+<Pos s="5" l="64" c="55"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:2:1:2:1:1">
+<Attr>
+<Pos s="10" l="64" c="65"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="-" typref="3123498095">
+<Attr>
+<Pos s="10" l="64" c="65"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:2:1:2:2:1:1">
+<Attr>
+<Pos s="10" l="64" c="79"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="3123498095">
+<Attr>
+<Pos s="1" l="64" c="92"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:2:1:2:2:1:2:1">
+<Attr>
+<Pos s="3" l="64" c="94"/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
+</Then>
+</If_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:2:1:1">
+<Attr>
+<Pos s="5" l="65" c="12"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="&lt;&lt;|" typref="4272808321">
+<Attr>
+<Pos s="5" l="65" c="12"/>
+</Attr>
+<Nary_Exp op="{" typref="3123498095">
+<Attr>
+<Pos s="1" l="65" c="21"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:2:2:1:1:1">
+<Attr>
+<Pos s="3" l="65" c="23"/>
+</Attr>
+</Id>
+</Nary_Exp>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:2:2:1:2">
+<Attr>
+<Pos s="5" l="65" c="33"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:3:1:1">
+<Attr>
+<Pos s="8" l="66" c="12"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="&lt;&lt;|" typref="1800599008">
+<Attr>
+<Pos s="8" l="66" c="12"/>
+</Attr>
+<Nary_Exp op="{" typref="3123498095">
+<Attr>
+<Pos s="1" l="66" c="24"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:3:2:1:1:1">
+<Attr>
+<Pos s="3" l="66" c="26"/>
+</Attr>
+</Id>
+</Nary_Exp>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:3:2:1:2">
+<Attr>
+<Pos s="8" l="66" c="36"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:4:1:1">
+<Attr>
+<Pos s="9" l="67" c="12"/>
+</Attr>
+</Id>
+</Variables>
+<Values>
+<Binary_Exp op="-" typref="3123498095">
+<Attr>
+<Pos s="9" l="67" c="12"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:4:2:1:1">
+<Attr>
+<Pos s="9" l="67" c="25"/>
+</Attr>
+</Id>
+<Nary_Exp op="{" typref="3123498095">
+<Attr>
+<Pos s="1" l="67" c="37"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:4:2:1:2:1">
+<Attr>
+<Pos s="3" l="67" c="39"/>
+</Attr>
+</Id>
+</Nary_Exp>
+</Binary_Exp>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;"/>
+<Tag goalTag="Invariant is preserved">
+<Nary_Pred op="&amp;">
+<Attr>
+<Pos s="9" l="19" c="1"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((estado) : (ESTADO))">
+<Attr>
+<Pos s="1" l="20" c="12"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:1">
+<Attr>
+<Pos s="6" l="20" c="5"/>
+</Attr>
+</Id>
+<Id typref="1079407803" value="ESTADO" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:2">
+<Attr>
+<Pos s="6" l="20" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((eleitores) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="21" c="17"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:1">
+<Attr>
+<Pos s="9" l="21" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="21" c="19"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:2:1">
+<Attr>
+<Pos s="4" l="21" c="23"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((candidatos) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="22" c="18"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:1">
+<Attr>
+<Pos s="10" l="22" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="22" c="20"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:2:1">
+<Attr>
+<Pos s="4" l="22" c="24"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((local) : (((eleitores) +-&gt; (ZONAS))))">
+<Attr>
+<Pos s="1" l="23" c="13"/>
+</Attr>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:1">
+<Attr>
+<Pos s="5" l="23" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="357329816">
+<Attr>
+<Pos s="3" l="23" c="25"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:1">
+<Attr>
+<Pos s="9" l="23" c="15"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:2">
+<Attr>
+<Pos s="5" l="23" c="29"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((votos) : (((candidatos) +-&gt; (NAT))))">
+<Attr>
+<Pos s="1" l="24" c="13"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:1">
+<Attr>
+<Pos s="5" l="24" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3855221605">
+<Attr>
+<Pos s="3" l="24" c="26"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:1">
+<Attr>
+<Pos s="10" l="24" c="15"/>
+</Attr>
+</Id>
+<Id typref="3603043417" value="NAT" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:2">
+<Attr>
+<Pos s="3" l="24" c="30"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((registro) : (((eleitores) +-&gt; (BOOL))))">
+<Attr>
+<Pos s="1" l="25" c="16"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:1">
+<Attr>
+<Pos s="8" l="25" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3309974691">
+<Attr>
+<Pos s="3" l="25" c="28"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:1">
+<Attr>
+<Pos s="9" l="25" c="18"/>
+</Attr>
+</Id>
+<Id typref="4282494527" value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:2">
+<Attr>
+<Pos s="4" l="25" c="32"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Quantified_Pred type="!" initialTag="!(aa).(((((aa) : (eleitores))) =&gt; (not(aa = indefinido))))">
+<Attr>
+<Pos s="1" l="26" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:1:1">
+<Attr>
+<Pos s="2" l="26" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="26" c="31"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="26" c="19"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:1">
+<Attr>
+<Pos s="2" l="26" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:2">
+<Attr>
+<Pos s="9" l="26" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="26" c="37"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:1">
+<Attr>
+<Pos s="2" l="26" c="34"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:2">
+<Attr>
+<Pos s="10" l="26" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ee).(((((ee) : (candidatos))) =&gt; (not(ee = indefinido))))">
+<Attr>
+<Pos s="1" l="27" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:1:1">
+<Attr>
+<Pos s="2" l="27" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="27" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="27" c="19"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:1">
+<Attr>
+<Pos s="2" l="27" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:2">
+<Attr>
+<Pos s="10" l="27" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="27" c="38"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:1">
+<Attr>
+<Pos s="2" l="27" c="35"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:2">
+<Attr>
+<Pos s="10" l="27" c="41"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(ii).(((((ii) : (candidatos))) =&gt; (((ii) : (eleitores)))))">
+<Attr>
+<Pos s="1" l="28" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:1:1">
+<Attr>
+<Pos s="2" l="28" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="28" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="19"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:1">
+<Attr>
+<Pos s="2" l="28" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:2">
+<Attr>
+<Pos s="10" l="28" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="38"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:1">
+<Attr>
+<Pos s="2" l="28" c="35"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:2">
+<Attr>
+<Pos s="9" l="28" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(oo).(((((oo) : (ran(registro))) &amp; ((estado) = (preparacao))) =&gt; (((oo) = (FALSE)))))">
+<Attr>
+<Pos s="1" l="29" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:1:1">
+<Attr>
+<Pos s="2" l="29" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="29" c="57"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="29" c="19"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="29" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="4282494527">
+<Attr>
+<Pos s="3" l="29" c="21"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:2:1">
+<Attr>
+<Pos s="8" l="29" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="44"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="29" c="37"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="29" c="46"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="63"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:1">
+<Attr>
+<Pos s="2" l="29" c="60"/>
+</Attr>
+</Id>
+<Boolean_Literal typref="2043437594" value="FALSE" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:2">
+<Attr>
+<Pos s="5" l="29" c="65"/>
+</Attr>
+</Boolean_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Quantified_Pred type="!" initialTag="!(uu).(((((uu) : (ran(votos))) &amp; ((estado) = (preparacao))) =&gt; (((uu) = (0)))))">
+<Attr>
+<Pos s="1" l="30" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:1:1">
+<Attr>
+<Pos s="2" l="30" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="30" c="54"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="30" c="19"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="30" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="3603043417">
+<Attr>
+<Pos s="3" l="30" c="21"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:2:1">
+<Attr>
+<Pos s="5" l="30" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="41"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="30" c="34"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="30" c="43"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="60"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:1">
+<Attr>
+<Pos s="2" l="30" c="57"/>
+</Attr>
+</Id>
+<Integer_Literal typref="2701647786" value="0" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:2:2">
+<Attr>
+<Pos s="1" l="30" c="62"/>
+</Attr>
+</Integer_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Binary_Pred>
+</Sub_Calculus>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessConstraints</Tag>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessProperties</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Hypothesis/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;"/>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInvariant</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((estado) : (ESTADO))">
+<Attr>
+<Pos s="1" l="20" c="12"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:1">
+<Attr>
+<Pos s="6" l="20" c="5"/>
+</Attr>
+</Id>
+<Id typref="1079407803" value="ESTADO" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:1:2">
+<Attr>
+<Pos s="6" l="20" c="14"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((eleitores) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="21" c="17"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:1">
+<Attr>
+<Pos s="9" l="21" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="21" c="19"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:2:2:1">
+<Attr>
+<Pos s="4" l="21" c="23"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((candidatos) : (FIN(CPFs)))">
+<Attr>
+<Pos s="1" l="22" c="18"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:1">
+<Attr>
+<Pos s="10" l="22" c="7"/>
+</Attr>
+</Id>
+<Unary_Exp op="FIN" typref="891071146">
+<Attr>
+<Pos s="3" l="22" c="20"/>
+</Attr>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:3:2:1">
+<Attr>
+<Pos s="4" l="22" c="24"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((local) : (((eleitores) +-&gt; (ZONAS))))">
+<Attr>
+<Pos s="1" l="23" c="13"/>
+</Attr>
+<Id typref="4272808321" value="local" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:1">
+<Attr>
+<Pos s="5" l="23" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="357329816">
+<Attr>
+<Pos s="3" l="23" c="25"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:1">
+<Attr>
+<Pos s="9" l="23" c="15"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:4:2:2">
+<Attr>
+<Pos s="5" l="23" c="29"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((votos) : (((candidatos) +-&gt; (NAT))))">
+<Attr>
+<Pos s="1" l="24" c="13"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:1">
+<Attr>
+<Pos s="5" l="24" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3855221605">
+<Attr>
+<Pos s="3" l="24" c="26"/>
+</Attr>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:1">
+<Attr>
+<Pos s="10" l="24" c="15"/>
+</Attr>
+</Id>
+<Id typref="3603043417" value="NAT" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:5:2:2">
+<Attr>
+<Pos s="3" l="24" c="30"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((registro) : (((eleitores) +-&gt; (BOOL))))">
+<Attr>
+<Pos s="1" l="25" c="16"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:1">
+<Attr>
+<Pos s="8" l="25" c="7"/>
+</Attr>
+</Id>
+<Binary_Exp op="+-&gt;" typref="3309974691">
+<Attr>
+<Pos s="3" l="25" c="28"/>
+</Attr>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:1">
+<Attr>
+<Pos s="9" l="25" c="18"/>
+</Attr>
+</Id>
+<Id typref="4282494527" value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:6:2:2">
+<Attr>
+<Pos s="4" l="25" c="32"/>
+</Attr>
+</Id>
+</Binary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:1:1">
+<Attr>
+<Pos s="2" l="26" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="26" c="31"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="26" c="19"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:1">
+<Attr>
+<Pos s="2" l="26" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:2">
+<Attr>
+<Pos s="9" l="26" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
+<Binary_Pred op="=&gt;">
+<Quantified_Pred type="!" initialTag="!(aa).(((((aa) : (eleitores))) =&gt; (not(aa = indefinido))))">
+<Attr>
+<Pos s="1" l="26" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:1:1">
+<Attr>
+<Pos s="2" l="26" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="26" c="31"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="26" c="19"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:1">
+<Attr>
+<Pos s="2" l="26" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:1:2">
+<Attr>
+<Pos s="9" l="26" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="26" c="37"/>
+</Attr>
+<Id typref="425601002" value="aa" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:1">
+<Attr>
+<Pos s="2" l="26" c="34"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:7:2:1:2:2">
+<Attr>
+<Pos s="10" l="26" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:1:1">
+<Attr>
+<Pos s="2" l="27" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="27" c="32"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="27" c="19"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:1">
+<Attr>
+<Pos s="2" l="27" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:2">
+<Attr>
+<Pos s="10" l="27" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
+<Binary_Pred op="=&gt;">
+<Quantified_Pred type="!" initialTag="!(ee).(((((ee) : (candidatos))) =&gt; (not(ee = indefinido))))">
+<Attr>
+<Pos s="1" l="27" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:1:1">
+<Attr>
+<Pos s="2" l="27" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="27" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="27" c="19"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:1">
+<Attr>
+<Pos s="2" l="27" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:1:2">
+<Attr>
+<Pos s="10" l="27" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="27" c="38"/>
+</Attr>
+<Id typref="425601002" value="ee" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:1">
+<Attr>
+<Pos s="2" l="27" c="35"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:8:2:1:2:2">
+<Attr>
+<Pos s="10" l="27" c="41"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:1:1">
+<Attr>
+<Pos s="2" l="28" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="28" c="32"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="19"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:1">
+<Attr>
+<Pos s="2" l="28" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:2">
+<Attr>
+<Pos s="10" l="28" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
+<Binary_Pred op="=&gt;">
+<Quantified_Pred type="!" initialTag="!(ii).(((((ii) : (candidatos))) =&gt; (((ii) : (eleitores)))))">
+<Attr>
+<Pos s="1" l="28" c="12"/>
+</Attr>
+<Variables>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:1:1">
+<Attr>
+<Pos s="2" l="28" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="28" c="32"/>
+</Attr>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="19"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:1">
+<Attr>
+<Pos s="2" l="28" c="16"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:1:2">
+<Attr>
+<Pos s="10" l="28" c="21"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="28" c="38"/>
+</Attr>
+<Id typref="425601002" value="ii" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:1">
+<Attr>
+<Pos s="2" l="28" c="35"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:9:2:1:2:2">
+<Attr>
+<Pos s="9" l="28" c="40"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:1:1">
+<Attr>
+<Pos s="2" l="29" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="29" c="57"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="29" c="19"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="29" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="4282494527">
+<Attr>
+<Pos s="3" l="29" c="21"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:2:1">
+<Attr>
+<Pos s="8" l="29" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="29" c="19"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="29" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="4282494527">
+<Attr>
+<Pos s="3" l="29" c="21"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:2:1">
+<Attr>
+<Pos s="8" l="29" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="44"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="29" c="37"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="29" c="46"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
+<Binary_Pred op="=&gt;">
+<Quantified_Pred type="!" initialTag="!(oo).(((((oo) : (ran(registro))) &amp; ((estado) = (preparacao))) =&gt; (((oo) = (FALSE)))))">
+<Attr>
+<Pos s="1" l="29" c="12"/>
+</Attr>
+<Variables>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:1:1">
+<Attr>
+<Pos s="2" l="29" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="29" c="57"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="29" c="19"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="29" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="4282494527">
+<Attr>
+<Pos s="3" l="29" c="21"/>
+</Attr>
+<Id typref="1800599008" value="registro" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:1:2:1">
+<Attr>
+<Pos s="8" l="29" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="44"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="29" c="37"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="29" c="46"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="29" c="63"/>
+</Attr>
+<Id typref="2043437594" value="oo" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:1">
+<Attr>
+<Pos s="2" l="29" c="60"/>
+</Attr>
+</Id>
+<Boolean_Literal typref="2043437594" value="FALSE" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:10:2:1:2:2">
+<Attr>
+<Pos s="5" l="29" c="65"/>
+</Attr>
+</Boolean_Literal>
+</Exp_Comparison>
+</Binary_Pred>
+</Body>
+</Quantified_Pred>
+<Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:1:1">
+<Attr>
+<Pos s="2" l="30" c="9"/>
+</Attr>
+</Id>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="=&gt;">
+<Attr>
+<Pos s="2" l="30" c="54"/>
+</Attr>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="30" c="19"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="30" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="3603043417">
+<Attr>
+<Pos s="3" l="30" c="21"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:2:1">
+<Attr>
+<Pos s="5" l="30" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+<Binary_Pred op="=&gt;">
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="30" c="19"/>
+</Attr>
+<Id typref="2701647786" value="uu" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:1">
+<Attr>
+<Pos s="2" l="30" c="16"/>
+</Attr>
+</Id>
+<Unary_Exp op="ran" typref="3603043417">
+<Attr>
+<Pos s="3" l="30" c="21"/>
+</Attr>
+<Id typref="1474013684" value="votos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:1:2:1">
+<Attr>
+<Pos s="5" l="30" c="25"/>
+</Attr>
+</Id>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="30" c="41"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:1">
+<Attr>
+<Pos s="6" l="30" c="34"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:3:1:11:2:1:1:2:2">
+<Attr>
+<Pos s="10" l="30" c="43"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Tag>WellDefinednessInitialisation</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_adicionar_eleitor</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="44" c="16"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:1:1">
+<Attr>
+<Pos s="6" l="44" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:1:2">
+<Attr>
+<Pos s="10" l="44" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="45" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:2:1">
+<Attr>
+<Pos s="3" l="45" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:2:2">
+<Attr>
+<Pos s="4" l="45" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Attr>
+<Pos s="2" l="46" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:3:1">
+<Attr>
+<Pos s="3" l="46" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:3:2">
+<Attr>
+<Pos s="9" l="46" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="47" c="16"/>
+</Attr>
+<Id typref="2665920861" value="zona" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:4:1">
+<Attr>
+<Pos s="4" l="47" c="11"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:4:2">
+<Attr>
+<Pos s="5" l="47" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_adicionar_eleitor</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="44" c="16"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:1:1">
+<Attr>
+<Pos s="6" l="44" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:1:2">
+<Attr>
+<Pos s="10" l="44" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="45" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:2:1">
+<Attr>
+<Pos s="3" l="45" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:2:2">
+<Attr>
+<Pos s="4" l="45" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Attr>
+<Pos s="2" l="46" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:3:1">
+<Attr>
+<Pos s="3" l="46" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:3:2">
+<Attr>
+<Pos s="9" l="46" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="47" c="16"/>
+</Attr>
+<Id typref="2665920861" value="zona" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:4:1">
+<Attr>
+<Pos s="4" l="47" c="11"/>
+</Attr>
+</Id>
+<Id typref="3411217126" value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:4:2">
+<Attr>
+<Pos s="5" l="47" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="48" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:5:1">
+<Attr>
+<Pos s="3" l="48" c="11"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:1:2:1:5:2">
+<Attr>
+<Pos s="10" l="48" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_Precondition_remover_eleitor</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="59" c="16"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:1:1">
+<Attr>
+<Pos s="6" l="59" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:1:2">
+<Attr>
+<Pos s="10" l="59" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="60" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:2:1">
+<Attr>
+<Pos s="3" l="60" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:2:2">
+<Attr>
+<Pos s="4" l="60" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="61" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:3:1">
+<Attr>
+<Pos s="3" l="61" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:3:2">
+<Attr>
+<Pos s="9" l="61" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<Proof_Obligation>
+<Comment>Operations dans une machine abstraite</Comment>
+<Tag>WellDefinedness_remover_eleitor</Tag>
+<Tag>INVARIANT</Tag>
+<Definition name="B definitions"/>
+<Definition name="ctx"/>
+<Definition name="cst"/>
+<Definition name="lprp"/>
+<Definition name="inprp"/>
+<Definition name="inext"/>
+<Definition name="seext"/>
+<Definition name="inv"/>
+<Definition name="ass"/>
+<Hypothesis>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op="=">
+<Attr>
+<Pos s="1" l="59" c="16"/>
+</Attr>
+<Id typref="1518859038" value="estado" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:1:1">
+<Attr>
+<Pos s="6" l="59" c="9"/>
+</Attr>
+</Id>
+<Id typref="1518859038" value="preparacao" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:1:2">
+<Attr>
+<Pos s="10" l="59" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="60" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:2:1">
+<Attr>
+<Pos s="3" l="60" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:2:2">
+<Attr>
+<Pos s="4" l="60" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="61" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:3:1">
+<Attr>
+<Pos s="3" l="61" c="11"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="eleitores" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:3:2">
+<Attr>
+<Pos s="9" l="61" c="17"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Exp_Comparison op="/=">
+<Attr>
+<Pos s="2" l="62" c="15"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:4:1">
+<Attr>
+<Pos s="3" l="62" c="11"/>
+</Attr>
+</Id>
+<Id typref="425601002" value="indefinido" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:2:1:4:2">
+<Attr>
+<Pos s="10" l="62" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Nary_Pred>
+</Hypothesis>
+<Goal>
+<Tag goalTag="Well definedness">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="64" c="16"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:1:1:1">
+<Attr>
+<Pos s="3" l="64" c="12"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:1:1:2">
+<Attr>
+<Pos s="10" l="64" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Unary_Pred op="not">
+<Exp_Comparison op=":">
+<Attr>
+<Pos s="1" l="64" c="16"/>
+</Attr>
+<Id typref="425601002" value="cpf" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:1:1:1">
+<Attr>
+<Pos s="3" l="64" c="12"/>
+</Attr>
+</Id>
+<Id typref="3123498095" value="candidatos" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:5:2:3:1:1:1:1:2">
+<Attr>
+<Pos s="10" l="64" c="18"/>
+</Attr>
+</Id>
+</Exp_Comparison>
+</Unary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Nary_Pred>
+</Tag>
+</Goal>
+</Proof_Obligation>
+<TypeInfos>
+<Type id="1518859038">
+<Id value="ESTADO" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:1:1"/>
+</Type>
+<Type id="3123498095">
+<Unary_Exp op="POW">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:2:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="4272808321">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:3:1:1:1"/>
+<Id value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:3:1:1:2"/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="1474013684">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:4:1:1:1"/>
+<Id value="INTEGER" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:4:1:1:2"/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="1800599008">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:5:1:1:1"/>
+<Id value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:5:1:1:2"/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="1079407803">
+<Unary_Exp op="POW">
+<Id value="ESTADO" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:6:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="891071146">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:7:1:1:1"/>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="357329816">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:8:1:1:1:1"/>
+<Id value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:8:1:1:1:2"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3411217126">
+<Unary_Exp op="POW">
+<Id value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:9:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="3855221605">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:10:1:1:1:1"/>
+<Id value="INTEGER" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:10:1:1:1:2"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="3603043417">
+<Unary_Exp op="POW">
+<Id value="INTEGER" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:11:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="3309974691">
+<Unary_Exp op="POW">
+<Unary_Exp op="POW">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:12:1:1:1:1"/>
+<Id value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:12:1:1:1:2"/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id="4282494527">
+<Unary_Exp op="POW">
+<Id value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:13:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="425601002">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:14:1"/>
+</Type>
+<Type id="2043437594">
+<Id value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:15:1"/>
+</Type>
+<Type id="2701647786">
+<Id value="INTEGER" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:16:1"/>
+</Type>
+<Type id="3817003670">
+<Unary_Exp op="POW">
+<Generic_Type tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:17:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="2665920861">
+<Id value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:18:1"/>
+</Type>
+<Type id="4163728344">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:19:1:1"/>
+<Id value="ZONAS" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:19:1:2"/>
+</Binary_Exp>
+</Type>
+<Type id="4186206435">
+<Binary_Exp op="*">
+<Id value="CPFs" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:20:1:1"/>
+<Id value="BOOL" tag="C:\Users\josen\Desktop\exerciciosB\Exercicio_escolar\bdp\MVotacao.bxml:1:6:20:1:2"/>
+</Binary_Exp>
+</Type>
+<Type id="1079407803">
+<Unary_Exp op="POW">
+<Id value="ESTADO" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:3:1:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="1518859038">
+<Id value="ESTADO" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:3:2:1"/>
+</Type>
+<Type id="3123498095">
+<Unary_Exp op="POW">
+<Id value="CPFs" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:3:3:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="425601002">
+<Id value="CPFs" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:3:4:1"/>
+</Type>
+<Type id="3411217126">
+<Unary_Exp op="POW">
+<Id value="ZONAS" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:3:5:1:1"/>
+</Unary_Exp>
+</Type>
+<Type id="2665920861">
+<Id value="ZONAS" tag="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar/bdp\MVotacao_Ctx.bxml:1:3:6:1"/>
+</Type>
+</TypeInfos>
+</Proof_Obligations>

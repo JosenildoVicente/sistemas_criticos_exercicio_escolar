@@ -1,0 +1,6 @@
+digraph {
+MVotacao [ label=" MVotacao " shape= box ]
+MVotacao_Ctx [ label=" MVotacao_Ctx " shape= box ]
+
+"MVotacao" -> "MVotacao_Ctx" [style= dotted ]
+}
