@@ -1,0 +1,10 @@
+/* MVotacao_Ctx_i
+ * Author: Josenildo Vicente
+ * Creation date: 28/04/2021
+ */
+
+IMPLEMENTATION MVotacao_Ctx_i
+REFINES MVotacao_Ctx
+
+
+ END

@@ -1,6 +1,6 @@
 digraph {
-MVotacao [ label=" MVotacao " shape= box ]
-MVotacao_Ctx [ label=" MVotacao_Ctx " shape= box ]
+MVotacao_Ctx_i [ label=" MVotacao_Ctx\nMVotacao_Ctx_i " shape= box ]
+MVotacao_i [ label=" MVotacao\nMVotacao_i " shape= box ]
 
-"MVotacao" -> "MVotacao_Ctx" [style= dotted ]
+"MVotacao_i" -> "MVotacao_Ctx_i" [style= dotted ]
 }

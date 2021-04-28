@@ -1,0 +1,8 @@
+<Machine name='MVotacao_Ctx_i' type='implementation'>
+<Abstraction>MVotacao_Ctx</Abstraction>
+<Initialisation>
+<Skip/>
+</Initialisation>
+<TypeInfos/>
+
+</Machine>

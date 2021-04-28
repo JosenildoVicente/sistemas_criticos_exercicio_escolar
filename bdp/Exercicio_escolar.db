@@ -10,5 +10,11 @@
         <component_file path="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar" name="MVotacao_Ctx" suffix="mch" user="josen">
             <component name="MVotacao_Ctx" type="specification" />
         </component_file>
+        <component_file path="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar" name="MVotacao_Ctx_i" suffix="imp" user="josen">
+            <component name="MVotacao_Ctx_i" type="implementation" />
+        </component_file>
+        <component_file path="C:/Users/josen/Desktop/exerciciosB/Exercicio_escolar" name="MVotacao_i" suffix="imp" user="josen">
+            <component name="MVotacao_i" type="implementation" />
+        </component_file>
     </project>
 </db_xml>
