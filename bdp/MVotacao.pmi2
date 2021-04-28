@@ -1,11 +1,52 @@
 ﻿THEORY BalanceX IS
-  MVotacao,30,0,0,23,2,2,0;
+  MVotacao,61,0,0,49,5,2,0;
   Initialisation,8,0,0,8,0,0,0;
+  WellDefinedness_Precondition_mudar_local,1,0,0,1,0,0,0;
+  WellDefinedness_Precondition_votar,2,0,0,2,0,0,0;
+  WellDefinedness_apurar_vencedor,6,0,0,6,0,0,0;
+  WellDefinedness_votar,1,0,0,1,0,0,0;
+  adicionar_candidato,5,0,0,2,3,0,0;
   adicionar_eleitor,6,0,0,4,2,0,0;
-  remover_eleitor,16,0,0,11,0,2,0
+  concluir_votacao,2,0,0,2,0,0,0;
+  iniciar_votacao,2,0,0,2,0,0,0;
+  mudar_local,1,0,0,1,0,0,0;
+  remover_candidato,5,0,0,4,0,0,0;
+  remover_eleitor,16,0,0,11,0,2,0;
+  votar,6,0,0,5,0,0,0
 END
 &
 THEORY ProofState IS
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(1);
+  Proved(1);
+  Proved(1);
+  Proved(0);
+  Proved(0);
+  Proved(0);
   Unproved;
   Proved(0);
   Proved(0);
@@ -39,6 +80,37 @@ THEORY ProofState IS
 END
 &
 THEORY MethodList IS
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
   ?;
   pr;
   pr;
@@ -72,6 +144,37 @@ THEORY MethodList IS
 END
 &
 THEORY PassList IS
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(1),(?;0);
+  Force(1),(?;0);
+  Force(1),(?;0);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
   Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;

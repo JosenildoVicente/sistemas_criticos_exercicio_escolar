@@ -95,37 +95,79 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(MVotacao))==(adicionar_eleitor,remover_eleitor);
-  List_Operations(Machine(MVotacao))==(adicionar_eleitor,remover_eleitor)
+  Internal_List_Operations(Machine(MVotacao))==(adicionar_eleitor,remover_eleitor,mudar_local,adicionar_candidato,remover_candidato,iniciar_votacao,votar,concluir_votacao,apurar_vencedor);
+  List_Operations(Machine(MVotacao))==(adicionar_eleitor,remover_eleitor,mudar_local,adicionar_candidato,remover_candidato,iniciar_votacao,votar,concluir_votacao,apurar_vencedor)
 END
 &
 THEORY ListInputX IS
   List_Input(Machine(MVotacao),adicionar_eleitor)==(cpf,zona);
-  List_Input(Machine(MVotacao),remover_eleitor)==(cpf)
+  List_Input(Machine(MVotacao),remover_eleitor)==(cpf);
+  List_Input(Machine(MVotacao),mudar_local)==(cpf,zona);
+  List_Input(Machine(MVotacao),adicionar_candidato)==(cpf);
+  List_Input(Machine(MVotacao),remover_candidato)==(cpf);
+  List_Input(Machine(MVotacao),iniciar_votacao)==(?);
+  List_Input(Machine(MVotacao),votar)==(cpf,zona,cpf_candidato);
+  List_Input(Machine(MVotacao),concluir_votacao)==(?);
+  List_Input(Machine(MVotacao),apurar_vencedor)==(?)
 END
 &
 THEORY ListOutputX IS
   List_Output(Machine(MVotacao),adicionar_eleitor)==(?);
-  List_Output(Machine(MVotacao),remover_eleitor)==(?)
+  List_Output(Machine(MVotacao),remover_eleitor)==(?);
+  List_Output(Machine(MVotacao),mudar_local)==(?);
+  List_Output(Machine(MVotacao),adicionar_candidato)==(?);
+  List_Output(Machine(MVotacao),remover_candidato)==(?);
+  List_Output(Machine(MVotacao),iniciar_votacao)==(?);
+  List_Output(Machine(MVotacao),votar)==(?);
+  List_Output(Machine(MVotacao),concluir_votacao)==(?);
+  List_Output(Machine(MVotacao),apurar_vencedor)==(resultado)
 END
 &
 THEORY ListHeaderX IS
   List_Header(Machine(MVotacao),adicionar_eleitor)==(adicionar_eleitor(cpf,zona));
-  List_Header(Machine(MVotacao),remover_eleitor)==(remover_eleitor(cpf))
+  List_Header(Machine(MVotacao),remover_eleitor)==(remover_eleitor(cpf));
+  List_Header(Machine(MVotacao),mudar_local)==(mudar_local(cpf,zona));
+  List_Header(Machine(MVotacao),adicionar_candidato)==(adicionar_candidato(cpf));
+  List_Header(Machine(MVotacao),remover_candidato)==(remover_candidato(cpf));
+  List_Header(Machine(MVotacao),iniciar_votacao)==(iniciar_votacao);
+  List_Header(Machine(MVotacao),votar)==(votar(cpf,zona,cpf_candidato));
+  List_Header(Machine(MVotacao),concluir_votacao)==(concluir_votacao);
+  List_Header(Machine(MVotacao),apurar_vencedor)==(resultado <-- apurar_vencedor)
 END
 &
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
   List_Precondition(Machine(MVotacao),adicionar_eleitor)==(estado = preparacao & cpf: CPFs & cpf/:eleitores & zona: ZONAS & cpf/=indefinido);
-  List_Precondition(Machine(MVotacao),remover_eleitor)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido)
+  List_Precondition(Machine(MVotacao),remover_eleitor)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido);
+  List_Precondition(Machine(MVotacao),mudar_local)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf: dom(local) & zona: ZONAS & zona/=local(cpf) & cpf/=indefinido);
+  List_Precondition(Machine(MVotacao),adicionar_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf/:candidatos);
+  List_Precondition(Machine(MVotacao),remover_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf: candidatos);
+  List_Precondition(Machine(MVotacao),iniciar_votacao)==(estado = preparacao & candidatos/={});
+  List_Precondition(Machine(MVotacao),votar)==(estado = votacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & zona: ZONAS & cpf: dom(local) & cpf: dom(registro) & zona = local(cpf) & cpf_candidato: CPFs & cpf_candidato: candidatos\/{indefinido} & registro(cpf) = FALSE);
+  List_Precondition(Machine(MVotacao),concluir_votacao)==(estado = votacao);
+  List_Precondition(Machine(MVotacao),apurar_vencedor)==(estado = apuracao)
 END
 &
 THEORY ListSubstitutionX IS
+  Expanded_List_Substitution(Machine(MVotacao),apurar_vencedor)==(estado = apuracao | #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2) ==> resultado:={venc | #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2 & venc = vencedor)} [] not(#vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2)) ==> resultado:={indefinido});
+  Expanded_List_Substitution(Machine(MVotacao),concluir_votacao)==(estado = votacao | estado:=apuracao);
+  Expanded_List_Substitution(Machine(MVotacao),votar)==(estado = votacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & zona: ZONAS & cpf: dom(local) & cpf: dom(registro) & zona = local(cpf) & cpf_candidato: CPFs & cpf_candidato: candidatos\/{indefinido} & registro(cpf) = FALSE | cpf_candidato: candidatos & cpf_candidato: dom(votos) & votos(cpf_candidato)+1: NAT ==> votos:=votos<+{cpf_candidato|->votos(cpf_candidato)+1} [] not(cpf_candidato: candidatos & cpf_candidato: dom(votos) & votos(cpf_candidato)+1: NAT) ==> skip || registro:=registro<+{cpf|->TRUE});
+  Expanded_List_Substitution(Machine(MVotacao),iniciar_votacao)==(estado = preparacao & candidatos/={} | estado:=votacao);
+  Expanded_List_Substitution(Machine(MVotacao),remover_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf: candidatos | votos,candidatos:={cpf}<<|votos,candidatos-{cpf});
+  Expanded_List_Substitution(Machine(MVotacao),adicionar_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf/:candidatos | candidatos,votos:=candidatos\/{cpf},votos\/{cpf|->0});
+  Expanded_List_Substitution(Machine(MVotacao),mudar_local)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf: dom(local) & zona: ZONAS & zona/=local(cpf) & cpf/=indefinido | local:=local<+{cpf|->zona});
   Expanded_List_Substitution(Machine(MVotacao),remover_eleitor)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido | cpf: candidatos ==> votos,candidatos:={cpf}<<|votos,candidatos-{cpf} [] not(cpf: candidatos) ==> skip || local:={cpf}<<|local || registro:={cpf}<<|registro || eleitores:=eleitores-{cpf});
   Expanded_List_Substitution(Machine(MVotacao),adicionar_eleitor)==(estado = preparacao & cpf: CPFs & cpf/:eleitores & zona: ZONAS & cpf/=indefinido | eleitores,local,registro:=eleitores\/{cpf},local\/{cpf|->zona},registro\/{cpf|->FALSE});
   List_Substitution(Machine(MVotacao),adicionar_eleitor)==(eleitores:=eleitores\/{cpf} || local:=local\/{cpf|->zona} || registro:=registro\/{cpf|->FALSE});
-  List_Substitution(Machine(MVotacao),remover_eleitor)==(IF cpf: candidatos THEN votos:={cpf}<<|votos || candidatos:=candidatos-{cpf} END || local:={cpf}<<|local || registro:={cpf}<<|registro || eleitores:=eleitores-{cpf})
+  List_Substitution(Machine(MVotacao),remover_eleitor)==(IF cpf: candidatos THEN votos:={cpf}<<|votos || candidatos:=candidatos-{cpf} END || local:={cpf}<<|local || registro:={cpf}<<|registro || eleitores:=eleitores-{cpf});
+  List_Substitution(Machine(MVotacao),mudar_local)==(local:=local<+{cpf|->zona});
+  List_Substitution(Machine(MVotacao),adicionar_candidato)==(candidatos:=candidatos\/{cpf} || votos:=votos\/{cpf|->0});
+  List_Substitution(Machine(MVotacao),remover_candidato)==(votos:={cpf}<<|votos || candidatos:=candidatos-{cpf});
+  List_Substitution(Machine(MVotacao),iniciar_votacao)==(estado:=votacao);
+  List_Substitution(Machine(MVotacao),votar)==(IF cpf_candidato: candidatos & cpf_candidato: dom(votos) & votos(cpf_candidato)+1: NAT THEN votos:=votos<+{cpf_candidato|->votos(cpf_candidato)+1} END || registro(cpf):=TRUE);
+  List_Substitution(Machine(MVotacao),concluir_votacao)==(estado:=apuracao);
+  List_Substitution(Machine(MVotacao),apurar_vencedor)==(IF #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2) THEN resultado:={venc | #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2 & venc = vencedor)} ELSE resultado:={indefinido} END)
 END
 &
 THEORY ListConstantsX IS
@@ -177,11 +219,18 @@ END
 &
 THEORY ListANYVarX IS
   List_ANY_Var(Machine(MVotacao),adicionar_eleitor)==(?);
-  List_ANY_Var(Machine(MVotacao),remover_eleitor)==(?)
+  List_ANY_Var(Machine(MVotacao),remover_eleitor)==(?);
+  List_ANY_Var(Machine(MVotacao),mudar_local)==(?);
+  List_ANY_Var(Machine(MVotacao),adicionar_candidato)==(?);
+  List_ANY_Var(Machine(MVotacao),remover_candidato)==(?);
+  List_ANY_Var(Machine(MVotacao),iniciar_votacao)==(?);
+  List_ANY_Var(Machine(MVotacao),votar)==(?);
+  List_ANY_Var(Machine(MVotacao),concluir_votacao)==(?);
+  List_ANY_Var(Machine(MVotacao),apurar_vencedor)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(MVotacao)) == (? | ? | registro,votos,local,candidatos,eleitores,estado | ? | adicionar_eleitor,remover_eleitor | ? | seen(Machine(MVotacao_Ctx)) | ? | MVotacao);
+  List_Of_Ids(Machine(MVotacao)) == (? | ? | registro,votos,local,candidatos,eleitores,estado | ? | adicionar_eleitor,remover_eleitor,mudar_local,adicionar_candidato,remover_candidato,iniciar_votacao,votar,concluir_votacao,apurar_vencedor | ? | seen(Machine(MVotacao_Ctx)) | ? | MVotacao);
   List_Of_HiddenCst_Ids(Machine(MVotacao)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(MVotacao)) == (?);
   List_Of_VisibleVar_Ids(Machine(MVotacao)) == (? | ?);
@@ -198,7 +247,8 @@ THEORY VariablesEnvX IS
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(MVotacao)) == (Type(remover_eleitor) == Cst(No_type,etype(CPFs,?,?));Type(adicionar_eleitor) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?)))
+  Operations(Machine(MVotacao)) == (Type(apurar_vencedor) == Cst(SetOf(etype(CPFs,?,?)),No_type);Type(concluir_votacao) == Cst(No_type,No_type);Type(votar) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?)*etype(CPFs,?,?));Type(iniciar_votacao) == Cst(No_type,No_type);Type(remover_candidato) == Cst(No_type,etype(CPFs,?,?));Type(adicionar_candidato) == Cst(No_type,etype(CPFs,?,?));Type(mudar_local) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?));Type(remover_eleitor) == Cst(No_type,etype(CPFs,?,?));Type(adicionar_eleitor) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?)));
+  Observers(Machine(MVotacao)) == (Type(apurar_vencedor) == Cst(SetOf(etype(CPFs,?,?)),No_type))
 END
 &
 THEORY TCIntRdX IS
