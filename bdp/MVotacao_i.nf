@@ -44,8 +44,8 @@ THEORY ListVisibleVariablesX IS
   Abstract_List_VisibleVariables(Implementation(MVotacao_i))==(?);
   External_List_VisibleVariables(Implementation(MVotacao_i))==(?);
   Expanded_List_VisibleVariables(Implementation(MVotacao_i))==(?);
-  List_VisibleVariables(Implementation(MVotacao_i))==(registro,votos,local,candidatos,eleitores,estado);
-  Internal_List_VisibleVariables(Implementation(MVotacao_i))==(registro,votos,local,candidatos,eleitores,estado)
+  List_VisibleVariables(Implementation(MVotacao_i))==(registro_i,votos_i,local_i,candidatos_i,eleitores_i,estado_i);
+  Internal_List_VisibleVariables(Implementation(MVotacao_i))==(registro_i,votos_i,local_i,candidatos_i,eleitores_i,estado_i)
 END
 &
 THEORY ListInvariantX IS
@@ -53,7 +53,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Implementation(MVotacao_i))==(btrue);
   Abstract_List_Invariant(Implementation(MVotacao_i))==(estado: ESTADO & eleitores: FIN(CPFs) & candidatos: FIN(CPFs) & local: eleitores +-> ZONAS & votos: candidatos +-> NAT & registro: eleitores +-> BOOL & !aa.(aa: eleitores => aa/=indefinido) & !ee.(ee: candidatos => ee/=indefinido) & !ii.(ii: candidatos => ii: eleitores) & !oo.(oo: ran(registro) & estado = preparacao => oo = FALSE) & !uu.(uu: ran(votos) & estado = preparacao => uu = 0));
   Context_List_Invariant(Implementation(MVotacao_i))==(btrue);
-  List_Invariant(Implementation(MVotacao_i))==(btrue)
+  List_Invariant(Implementation(MVotacao_i))==(estado_i: ESTADO & eleitores_i: CPFs --> BOOL & candidatos_i: CPFs --> BOOL & local_i: CPFs --> (ZONAS --> BOOL) & votos_i: CPFs --> NAT & registro_i: CPFs --> BOOL)
 END
 &
 THEORY ListAssertionsX IS
@@ -72,9 +72,9 @@ THEORY ListExclusivityX IS
 END
 &
 THEORY ListInitialisationX IS
-  Expanded_List_Initialisation(Implementation(MVotacao_i))==(estado:=preparacao;eleitores:={};candidatos:={};local:={};votos:={};registro:={});
+  Expanded_List_Initialisation(Implementation(MVotacao_i))==(estado_i:=preparacao;eleitores_i:=CPFs*{FALSE};candidatos_i:=CPFs*{FALSE};local_i:=CPFs*{ZONAS*{FALSE}};votos_i:=CPFs*{0};registro_i:=CPFs*{FALSE});
   Context_List_Initialisation(Implementation(MVotacao_i))==(skip);
-  List_Initialisation(Implementation(MVotacao_i))==(estado:=preparacao;eleitores:={};candidatos:={};local:={};votos:={};registro:={})
+  List_Initialisation(Implementation(MVotacao_i))==(estado_i:=preparacao;eleitores_i:=CPFs*{FALSE};candidatos_i:=CPFs*{FALSE};local_i:=CPFs*{ZONAS*{FALSE}};votos_i:=CPFs*{0};registro_i:=CPFs*{FALSE})
 END
 &
 THEORY ListParametersX IS
@@ -153,24 +153,24 @@ THEORY ListPreconditionX IS
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Implementation(MVotacao_i),apurar_vencedor)==(estado = apuracao | #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2) ==> (vencedor: dom(votos) & aa: dom(votos) & SIGMA(ee).(ee: ran(votos) | ee)/2: INT & SIGMA(ee).(ee: ran(votos) | ee): INT & 2: INT & not(2 = 0) | resultado:={venc | #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2 & venc = vencedor)}) [] not(#vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2)) ==> resultado:={indefinido});
-  Expanded_List_Substitution(Implementation(MVotacao_i),concluir_votacao)==(estado = votacao | estado:=apuracao);
-  Expanded_List_Substitution(Implementation(MVotacao_i),votar)==(estado = votacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & zona: ZONAS & cpf: dom(local) & cpf: dom(registro) & zona = local(cpf) & cpf_candidato: CPFs & cpf_candidato: candidatos\/{indefinido} & registro(cpf) = FALSE | cpf_candidato: candidatos & cpf_candidato: dom(votos) & votos(cpf_candidato)+1: NAT ==> (cpf_candidato: dom(votos) & votos(cpf_candidato)+1: INT & votos(cpf_candidato): INT & 1: INT | votos:=votos<+{cpf_candidato|->votos(cpf_candidato)+1}) [] not(cpf_candidato: candidatos & cpf_candidato: dom(votos) & votos(cpf_candidato)+1: NAT) ==> skip;(cpf: dom(registro) | registro:=registro<+{cpf|->TRUE}));
-  Expanded_List_Substitution(Implementation(MVotacao_i),iniciar_votacao)==(estado = preparacao & candidatos/={} | estado:=votacao);
-  Expanded_List_Substitution(Implementation(MVotacao_i),remover_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf: candidatos | votos:={cpf}<<|votos;candidatos:=candidatos-{cpf});
-  Expanded_List_Substitution(Implementation(MVotacao_i),adicionar_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf/:candidatos | candidatos:=candidatos\/{cpf};votos:=votos\/{cpf|->0});
-  Expanded_List_Substitution(Implementation(MVotacao_i),mudar_local)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf: dom(local) & zona: ZONAS & zona/=local(cpf) & cpf/=indefinido | local:=local<+{cpf|->zona});
-  Expanded_List_Substitution(Implementation(MVotacao_i),remover_eleitor)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido | cpf: candidatos ==> (votos:={cpf}<<|votos;candidatos:=candidatos-{cpf}) [] not(cpf: candidatos) ==> skip;local:={cpf}<<|local;registro:={cpf}<<|registro;eleitores:=eleitores-{cpf});
-  Expanded_List_Substitution(Implementation(MVotacao_i),adicionar_eleitor)==(estado = preparacao & cpf: CPFs & cpf/:eleitores & zona: ZONAS & cpf/=indefinido | eleitores:=eleitores\/{cpf};local:=local\/{cpf|->zona};registro:=registro\/{cpf|->FALSE});
-  List_Substitution(Implementation(MVotacao_i),adicionar_eleitor)==(eleitores:=eleitores\/{cpf};local:=local\/{cpf|->zona};registro:=registro\/{cpf|->FALSE});
-  List_Substitution(Implementation(MVotacao_i),remover_eleitor)==(IF cpf: candidatos THEN votos:={cpf}<<|votos;candidatos:=candidatos-{cpf} END;local:={cpf}<<|local;registro:={cpf}<<|registro;eleitores:=eleitores-{cpf});
-  List_Substitution(Implementation(MVotacao_i),mudar_local)==(local:=local<+{cpf|->zona});
-  List_Substitution(Implementation(MVotacao_i),adicionar_candidato)==(candidatos:=candidatos\/{cpf};votos:=votos\/{cpf|->0});
-  List_Substitution(Implementation(MVotacao_i),remover_candidato)==(votos:={cpf}<<|votos;candidatos:=candidatos-{cpf});
-  List_Substitution(Implementation(MVotacao_i),iniciar_votacao)==(estado:=votacao);
-  List_Substitution(Implementation(MVotacao_i),votar)==(IF cpf_candidato: candidatos & cpf_candidato: dom(votos) & votos(cpf_candidato)+1: NAT THEN votos:=votos<+{cpf_candidato|->votos(cpf_candidato)+1} END;registro(cpf):=TRUE);
-  List_Substitution(Implementation(MVotacao_i),concluir_votacao)==(estado:=apuracao);
-  List_Substitution(Implementation(MVotacao_i),apurar_vencedor)==(IF #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2) THEN resultado:={venc | #vencedor.(vencedor: candidatos & vencedor: dom(votos) & !aa.(aa: candidatos & aa/=vencedor => votos(vencedor)>votos(aa)) & votos(vencedor)>SIGMA(ee).(ee: ran(votos) | ee)/2 & venc = vencedor)} ELSE resultado:={indefinido} END)
+  Expanded_List_Substitution(Implementation(MVotacao_i),apurar_vencedor)==(estado = apuracao | @(cand_1,cand_2,cand_3).((cpf1: dom(votos_i) | cand_1:=votos_i(cpf1));(cpf2: dom(votos_i) | cand_2:=votos_i(cpf2));(cpf3: dom(votos_i) | cand_3:=votos_i(cpf3));(cand_1>cand_2 & cand_1>cand_3 ==> resultado:=cpf1 [] not(cand_1>cand_2 & cand_1>cand_3) ==> (cand_2>cand_1 & cand_2>cand_3 ==> resultado:=cpf2 [] not(cand_2>cand_1 & cand_2>cand_3) ==> (cand_3>cand_1 & cand_3>cand_2 ==> resultado:=cpf3 [] not(cand_3>cand_1 & cand_3>cand_2) ==> resultado:=indefinido)))));
+  Expanded_List_Substitution(Implementation(MVotacao_i),concluir_votacao)==(estado = votacao | estado_i = votacao ==> estado_i:=apuracao [] not(estado_i = votacao) ==> skip);
+  Expanded_List_Substitution(Implementation(MVotacao_i),votar)==(estado = votacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & zona: ZONAS & cpf: dom(local) & cpf: dom(registro) & zona = local(cpf) & cpf_candidato: CPFs & cpf_candidato: candidatos\/{indefinido} & registro(cpf) = FALSE | @(ee,ii,oo,uu).((cpf: dom(eleitores_i) | ii:=eleitores_i(cpf));(cpf_candidato: dom(candidatos_i) | oo:=candidatos_i(cpf_candidato));(cpf: dom(registro_i) | uu:=registro_i(cpf));(cpf: dom(local_i) & zona: dom(local_i(cpf)) | ee:=local_i(cpf)(zona));(ii = TRUE & ee = TRUE & uu = FALSE ==> (oo = TRUE ==> (cpf_candidato: dom(votos_i) & votos_i(cpf_candidato)+1: INT & votos_i(cpf_candidato): INT & 1: INT | votos_i:=votos_i<+{cpf_candidato|->votos_i(cpf_candidato)+1}) [] not(oo = TRUE) ==> skip;(cpf: dom(registro_i) | registro_i:=registro_i<+{cpf|->TRUE})) [] not(ii = TRUE & ee = TRUE & uu = FALSE) ==> skip)));
+  Expanded_List_Substitution(Implementation(MVotacao_i),iniciar_votacao)==(estado = preparacao & candidatos/={} | @(eleitor_1,eleitor_2,eleitor_3).((cpf1: dom(candidatos_i) | eleitor_1:=candidatos_i(cpf1));(cpf2: dom(candidatos_i) | eleitor_2:=candidatos_i(cpf2));(cpf3: dom(candidatos_i) | eleitor_3:=candidatos_i(cpf3));(eleitor_1 = TRUE or eleitor_2 = TRUE or eleitor_3 = TRUE ==> estado_i:=votacao [] not(eleitor_1 = TRUE or eleitor_2 = TRUE or eleitor_3 = TRUE) ==> skip)));
+  Expanded_List_Substitution(Implementation(MVotacao_i),remover_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf: candidatos | @(ii,oo).((cpf: dom(eleitores_i) | ii:=eleitores_i(cpf));(cpf: dom(candidatos_i) | oo:=candidatos_i(cpf));(ii = TRUE & oo = TRUE ==> ((cpf: dom(votos_i) & 0: INT | votos_i:=votos_i<+{cpf|->0});(cpf: dom(candidatos_i) | candidatos_i:=candidatos_i<+{cpf|->FALSE})) [] not(ii = TRUE & oo = TRUE) ==> skip)));
+  Expanded_List_Substitution(Implementation(MVotacao_i),adicionar_candidato)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido & cpf/:candidatos | @(ii,oo).((cpf: dom(eleitores_i) | ii:=eleitores_i(cpf));(cpf: dom(candidatos_i) | oo:=candidatos_i(cpf));(ii = TRUE & oo = FALSE ==> ((cpf: dom(candidatos_i) | candidatos_i:=candidatos_i<+{cpf|->TRUE});(cpf: dom(votos_i) & 0: INT | votos_i:=votos_i<+{cpf|->0})) [] not(ii = TRUE & oo = FALSE) ==> skip)));
+  Expanded_List_Substitution(Implementation(MVotacao_i),mudar_local)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf: dom(local) & zona: ZONAS & zona/=local(cpf) & cpf/=indefinido | @ii.((cpf: dom(eleitores_i) | ii:=eleitores_i(cpf));(ii = TRUE ==> ((cpf: dom(local_i) | local_i:=local_i<+{cpf|->ZONAS*{FALSE}});(cpf: dom(local_i) & zona: dom(local_i(cpf)) | local_i:=local_i<+{cpf|->(local_i(cpf)<+{zona|->TRUE})})) [] not(ii = TRUE) ==> skip)));
+  Expanded_List_Substitution(Implementation(MVotacao_i),remover_eleitor)==(estado = preparacao & cpf: CPFs & cpf: eleitores & cpf/=indefinido | @(ii,oo).((cpf: dom(eleitores_i) | oo:=eleitores_i(cpf));(cpf: dom(candidatos_i) | ii:=candidatos_i(cpf));(oo = TRUE ==> (ii = TRUE ==> ((cpf: dom(votos_i) & 0: INT | votos_i:=votos_i<+{cpf|->0});(cpf: dom(candidatos_i) | candidatos_i:=candidatos_i<+{cpf|->FALSE})) [] not(ii = TRUE) ==> skip;(cpf: dom(local_i) | local_i:=local_i<+{cpf|->ZONAS*{FALSE}});(cpf: dom(registro_i) | registro_i:=registro_i<+{cpf|->FALSE});(cpf: dom(eleitores_i) | eleitores_i:=eleitores_i<+{cpf|->FALSE})) [] not(oo = TRUE) ==> skip)));
+  Expanded_List_Substitution(Implementation(MVotacao_i),adicionar_eleitor)==(estado = preparacao & cpf: CPFs & cpf/:eleitores & zona: ZONAS & cpf/=indefinido | @ii.((cpf: dom(eleitores_i) | ii:=eleitores_i(cpf));(ii = FALSE ==> ((cpf: dom(eleitores_i) | eleitores_i:=eleitores_i<+{cpf|->TRUE});(cpf: dom(local_i) & zona: dom(local_i(cpf)) | local_i:=local_i<+{cpf|->(local_i(cpf)<+{zona|->TRUE})});(cpf: dom(registro_i) | registro_i:=registro_i<+{cpf|->FALSE})) [] not(ii = FALSE) ==> skip)));
+  List_Substitution(Implementation(MVotacao_i),adicionar_eleitor)==(VAR ii IN ii:=eleitores_i(cpf);IF ii = FALSE THEN eleitores_i(cpf):=TRUE;local_i(cpf)(zona):=TRUE;registro_i(cpf):=FALSE END END);
+  List_Substitution(Implementation(MVotacao_i),remover_eleitor)==(VAR ii,oo IN oo:=eleitores_i(cpf);ii:=candidatos_i(cpf);IF oo = TRUE THEN IF ii = TRUE THEN votos_i(cpf):=0;candidatos_i(cpf):=FALSE END;local_i(cpf):=ZONAS*{FALSE};registro_i(cpf):=FALSE;eleitores_i(cpf):=FALSE END END);
+  List_Substitution(Implementation(MVotacao_i),mudar_local)==(VAR ii IN ii:=eleitores_i(cpf);IF ii = TRUE THEN local_i(cpf):=ZONAS*{FALSE};local_i(cpf)(zona):=TRUE END END);
+  List_Substitution(Implementation(MVotacao_i),adicionar_candidato)==(VAR ii,oo IN ii:=eleitores_i(cpf);oo:=candidatos_i(cpf);IF ii = TRUE & oo = FALSE THEN candidatos_i(cpf):=TRUE;votos_i(cpf):=0 END END);
+  List_Substitution(Implementation(MVotacao_i),remover_candidato)==(VAR ii,oo IN ii:=eleitores_i(cpf);oo:=candidatos_i(cpf);IF ii = TRUE & oo = TRUE THEN votos_i(cpf):=0;candidatos_i(cpf):=FALSE END END);
+  List_Substitution(Implementation(MVotacao_i),iniciar_votacao)==(VAR eleitor_1,eleitor_2,eleitor_3 IN eleitor_1:=candidatos_i(cpf1);eleitor_2:=candidatos_i(cpf2);eleitor_3:=candidatos_i(cpf3);IF eleitor_1 = TRUE or eleitor_2 = TRUE or eleitor_3 = TRUE THEN estado_i:=votacao END END);
+  List_Substitution(Implementation(MVotacao_i),votar)==(VAR ee,ii,oo,uu IN ii:=eleitores_i(cpf);oo:=candidatos_i(cpf_candidato);uu:=registro_i(cpf);ee:=local_i(cpf)(zona);IF ii = TRUE & ee = TRUE & uu = FALSE THEN IF oo = TRUE THEN votos_i(cpf_candidato):=votos_i(cpf_candidato)+1 END;registro_i(cpf):=TRUE END END);
+  List_Substitution(Implementation(MVotacao_i),concluir_votacao)==(IF estado_i = votacao THEN estado_i:=apuracao END);
+  List_Substitution(Implementation(MVotacao_i),apurar_vencedor)==(VAR cand_1,cand_2,cand_3 IN cand_1:=votos_i(cpf1);cand_2:=votos_i(cpf2);cand_3:=votos_i(cpf3);IF cand_1>cand_2 & cand_1>cand_3 THEN resultado:=cpf1 ELSE IF cand_2>cand_1 & cand_2>cand_3 THEN resultado:=cpf2 ELSE IF cand_3>cand_1 & cand_3>cand_2 THEN resultado:=cpf3 ELSE resultado:=indefinido END END END END)
 END
 &
 THEORY ListConstantsX IS
@@ -229,8 +229,8 @@ END
 THEORY ListIncludedOperationsX END
 &
 THEORY InheritedEnvX IS
-  VisibleVariables(Implementation(MVotacao_i))==(Type(estado) == Mvv(etype(ESTADO,?,?));Type(eleitores) == Mvv(SetOf(etype(CPFs,?,?)));Type(candidatos) == Mvv(SetOf(etype(CPFs,?,?)));Type(local) == Mvv(SetOf(etype(CPFs,?,?)*etype(ZONAS,?,?)));Type(votos) == Mvv(SetOf(etype(CPFs,?,?)*btype(INTEGER,?,?)));Type(registro) == Mvv(SetOf(etype(CPFs,?,?)*btype(BOOL,?,?))));
-  Operations(Implementation(MVotacao_i))==(Type(apurar_vencedor) == Cst(SetOf(etype(CPFs,?,?)),No_type);Type(concluir_votacao) == Cst(No_type,No_type);Type(votar) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?)*etype(CPFs,?,?));Type(iniciar_votacao) == Cst(No_type,No_type);Type(remover_candidato) == Cst(No_type,etype(CPFs,?,?));Type(adicionar_candidato) == Cst(No_type,etype(CPFs,?,?));Type(mudar_local) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?));Type(remover_eleitor) == Cst(No_type,etype(CPFs,?,?));Type(adicionar_eleitor) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?)))
+  VisibleVariables(Implementation(MVotacao_i))==(Type(estado_i) == Mvv(etype(ESTADO,?,?));Type(eleitores_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(BOOL,0,1)));Type(candidatos_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(BOOL,0,1)));Type(local_i) == Mvv(SetOf(etype(CPFs,0,3)*SetOf(etype(ZONAS,0,1)*btype(BOOL,0,1))));Type(votos_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(INTEGER,0,MAXINT)));Type(registro_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(BOOL,0,1))));
+  Operations(Implementation(MVotacao_i))==(Type(apurar_vencedor) == Cst(etype(CPFs,?,?),No_type);Type(concluir_votacao) == Cst(No_type,No_type);Type(votar) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?)*etype(CPFs,?,?));Type(iniciar_votacao) == Cst(No_type,No_type);Type(remover_candidato) == Cst(No_type,etype(CPFs,?,?));Type(adicionar_candidato) == Cst(No_type,etype(CPFs,?,?));Type(mudar_local) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?));Type(remover_eleitor) == Cst(No_type,etype(CPFs,?,?));Type(adicionar_eleitor) == Cst(No_type,etype(CPFs,?,?)*etype(ZONAS,?,?)))
 END
 &
 THEORY ListVisibleStaticX IS
@@ -244,7 +244,7 @@ THEORY ListOfIdsX IS
   List_Of_Ids(Implementation(MVotacao_i)) == (? | ? | ? | ? | adicionar_eleitor,remover_eleitor,mudar_local,adicionar_candidato,remover_candidato,iniciar_votacao,votar,concluir_votacao,apurar_vencedor | ? | seen(Machine(MVotacao_Ctx)) | ? | MVotacao_i);
   List_Of_HiddenCst_Ids(Implementation(MVotacao_i)) == (? | ?);
   List_Of_VisibleCst_Ids(Implementation(MVotacao_i)) == (?);
-  List_Of_VisibleVar_Ids(Implementation(MVotacao_i)) == (registro,votos,local,candidatos,eleitores,estado | ?);
+  List_Of_VisibleVar_Ids(Implementation(MVotacao_i)) == (registro_i,votos_i,local_i,candidatos_i,eleitores_i,estado_i | ?);
   List_Of_Ids_SeenBNU(Implementation(MVotacao_i)) == (?: ?);
   List_Of_Ids(Machine(MVotacao_Ctx)) == (ESTADO,CPFs,ZONAS,preparacao,votacao,apuracao,cpf1,cpf2,cpf3,indefinido,zona1,zona2 | ? | ? | ? | ? | ? | ? | ? | MVotacao_Ctx);
   List_Of_HiddenCst_Ids(Machine(MVotacao_Ctx)) == (? | ?);
@@ -254,7 +254,18 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY VisibleVariablesEnvX IS
-  VisibleVariables(Implementation(MVotacao_i)) == (Type(registro) == Mvv(SetOf(etype(CPFs,?,?)*btype(BOOL,?,?)));Type(votos) == Mvv(SetOf(etype(CPFs,?,?)*btype(INTEGER,?,?)));Type(local) == Mvv(SetOf(etype(CPFs,?,?)*etype(ZONAS,?,?)));Type(candidatos) == Mvv(SetOf(etype(CPFs,?,?)));Type(eleitores) == Mvv(SetOf(etype(CPFs,?,?)));Type(estado) == Mvv(etype(ESTADO,?,?)))
+  VisibleVariables(Implementation(MVotacao_i)) == (Type(registro_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(BOOL,0,1)));Type(votos_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(INTEGER,0,MAXINT)));Type(local_i) == Mvv(SetOf(etype(CPFs,0,3)*SetOf(etype(ZONAS,0,1)*btype(BOOL,0,1))));Type(candidatos_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(BOOL,0,1)));Type(eleitores_i) == Mvv(SetOf(etype(CPFs,0,3)*btype(BOOL,0,1)));Type(estado_i) == Mvv(etype(ESTADO,?,?)))
+END
+&
+THEORY VariablesLocEnvX IS
+  Variables_Loc(Implementation(MVotacao_i),adicionar_eleitor, 1) == (Type(ii) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(MVotacao_i),remover_eleitor, 1) == (Type(ii) == Lvl(btype(BOOL,?,?));Type(oo) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(MVotacao_i),mudar_local, 1) == (Type(ii) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(MVotacao_i),adicionar_candidato, 1) == (Type(ii) == Lvl(btype(BOOL,?,?));Type(oo) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(MVotacao_i),remover_candidato, 1) == (Type(ii) == Lvl(btype(BOOL,?,?));Type(oo) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(MVotacao_i),iniciar_votacao, 1) == (Type(eleitor_1) == Lvl(btype(BOOL,?,?));Type(eleitor_2) == Lvl(btype(BOOL,?,?));Type(eleitor_3) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(MVotacao_i),votar, 1) == (Type(ee) == Lvl(btype(BOOL,?,?));Type(ii) == Lvl(btype(BOOL,?,?));Type(oo) == Lvl(btype(BOOL,?,?));Type(uu) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(MVotacao_i),apurar_vencedor, 1) == (Type(cand_1) == Lvl(btype(INTEGER,?,?));Type(cand_2) == Lvl(btype(INTEGER,?,?));Type(cand_3) == Lvl(btype(INTEGER,?,?)))
 END
 &
 THEORY TCIntRdX IS
@@ -286,7 +297,7 @@ THEORY ListLocalPreconditionX END
 THEORY ListLocalSubstitutionX END
 &
 THEORY TypingPredicateX IS
-  TypingPredicate(Implementation(MVotacao_i))==(estado: ESTADO & eleitores: POW(CPFs) & candidatos: POW(CPFs) & local: POW(CPFs*ZONAS) & votos: POW(CPFs*INTEGER) & registro: POW(CPFs*BOOL))
+  TypingPredicate(Implementation(MVotacao_i))==(estado_i: ESTADO & eleitores_i: POW(CPFs*BOOL) & candidatos_i: POW(CPFs*BOOL) & local_i: POW(CPFs*POW(ZONAS*BOOL)) & votos_i: POW(CPFs*INTEGER) & registro_i: POW(CPFs*BOOL))
 END
 &
 THEORY ImportedVariablesListX END

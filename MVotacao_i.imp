@@ -11,198 +11,180 @@ SEES
     
 
 CONCRETE_VARIABLES
-    estado
-    ,eleitores
-    ,candidatos
-    ,local
-    ,votos
-    ,registro
+    estado_i
+    ,eleitores_i
+    ,candidatos_i
+    ,local_i
+    ,votos_i
+    ,registro_i
     
-
+INVARIANT
+    estado_i : ESTADO
+    & eleitores_i : CPFs --> BOOL
+    & candidatos_i : CPFs --> BOOL
+    & local_i : CPFs --> (ZONAS --> BOOL)
+    & votos_i : CPFs --> NAT
+    & registro_i : CPFs --> BOOL
+    
 INITIALISATION
-    estado := preparacao;
-    eleitores := {};
-    candidatos := {};
-    local := {};
-    votos := {};
-    registro := {} 
+    estado_i := preparacao;
+    eleitores_i := CPFs * {FALSE};
+    candidatos_i := CPFs * {FALSE};
+    local_i := CPFs * {ZONAS * {FALSE}};
+    votos_i := CPFs * {0};
+    registro_i := CPFs * {FALSE} 
     
 
 OPERATIONS
     adicionar_eleitor ( cpf, zona ) =
     BEGIN
-        eleitores := eleitores \/ { cpf };
-        local := local \/ { cpf |-> zona };
-        registro := registro \/ { cpf |-> FALSE }
+        VAR ii IN
+            ii := eleitores_i(cpf);
+            IF ii = FALSE
+            THEN
+                eleitores_i(cpf) := TRUE;
+                local_i(cpf)(zona) := TRUE;
+                registro_i(cpf) := FALSE
+            END
+        END
     END
-    
-//    PRE
-//        estado = preparacao
-//        & cpf : CPFs
-//        & cpf /: eleitores
-//        & zona : ZONAS
-//        & cpf /= indefinido
-//    THEN
-//       eleitores := eleitores \/ { cpf }
-//       || local := local \/ { cpf |-> zona }
-//       || registro := registro \/ { cpf |-> FALSE }
-//    END
     ;
 
     
     remover_eleitor ( cpf ) =
     BEGIN
-        IF cpf : candidatos 
-        THEN 
-            votos := { cpf } <<| votos;
-            candidatos := candidatos - { cpf }
-        END;
-        local := { cpf } <<| local;
-        registro := { cpf } <<| registro;
-        eleitores := eleitores - { cpf }
+        VAR ii, oo IN
+            oo := eleitores_i(cpf);
+            ii := candidatos_i(cpf);
+            IF oo = TRUE
+            THEN
+                IF ii = TRUE
+                THEN 
+                    votos_i(cpf) := 0;
+                    candidatos_i(cpf) := FALSE
+                END;
+                local_i(cpf) := (ZONAS * {FALSE});
+                registro_i(cpf) := FALSE;
+                eleitores_i(cpf) := FALSE
+            END
+        END
     END
-//    PRE
-//        estado = preparacao
-//        & cpf : CPFs
-//        & cpf : eleitores
-//        & cpf /= indefinido
-//    THEN
-//        IF cpf : candidatos THEN votos := { cpf } <<| votos  || candidatos := candidatos - { cpf } END
-//        || local := { cpf } <<| local
-//        || registro := { cpf } <<| registro
-//        || eleitores := eleitores - { cpf }
-//    END
     ;
 
     
     mudar_local ( cpf, zona ) =
     BEGIN
-        local:= local <+ {cpf |-> zona}
+        VAR ii IN
+            ii := eleitores_i(cpf);
+            IF (ii = TRUE)
+            THEN
+                local_i(cpf) := ZONAS * {FALSE};
+                local_i(cpf)(zona) := TRUE
+            END
+        END
+        
     END
-//    PRE
-//        estado = preparacao
-//        & cpf : CPFs
-//        & cpf : eleitores
-//        & cpf : dom(local)
-//        & zona : ZONAS
-//        & zona /= local(cpf)
-//        & cpf /= indefinido
-//    THEN
-//        local:= local <+ {cpf |-> zona}
-//    END
     ;
 
     
     adicionar_candidato ( cpf ) =
     BEGIN
-        candidatos := candidatos \/ { cpf };
-        votos := votos \/ { cpf |-> 0 }
+        VAR ii, oo IN
+            ii := eleitores_i(cpf);
+            oo := candidatos_i(cpf);
+            IF (ii = TRUE) & (oo = FALSE)
+            THEN
+                candidatos_i(cpf) := TRUE;
+                votos_i(cpf) := 0
+            END
+        END
     END
-//    PRE
-//        estado = preparacao
-//        & cpf : CPFs
-//        & cpf : eleitores
-//        & cpf /= indefinido
-//        & cpf /: candidatos
-//    THEN
-//       candidatos := candidatos \/ { cpf }
-//       || votos := votos \/ { cpf |-> 0 }
-//    END
     ;
 
     
     remover_candidato ( cpf ) =
     BEGIN
-        votos := { cpf } <<| votos;
-        candidatos := candidatos - { cpf }
+        VAR ii, oo IN
+            ii := eleitores_i(cpf);
+            oo := candidatos_i(cpf);
+            IF (ii = TRUE) & (oo = TRUE)
+            THEN
+                votos_i(cpf) := 0;
+                candidatos_i(cpf) := FALSE
+            END
+        END
     END
-//    PRE
-//        estado = preparacao
-//        & cpf : CPFs
-//        & cpf : eleitores
-//        & cpf /= indefinido
-//        & cpf : candidatos
-//    THEN
-//       votos := { cpf } <<| votos
-//       || candidatos := candidatos - { cpf }
-//    END
     ;
 
     
     iniciar_votacao =
     BEGIN
-        estado := votacao
+        VAR eleitor_1,eleitor_2,eleitor_3 IN
+            eleitor_1 := candidatos_i(cpf1);
+            eleitor_2 := candidatos_i(cpf2);
+            eleitor_3 := candidatos_i(cpf3);
+            IF (eleitor_1 = TRUE) or (eleitor_2 = TRUE) or (eleitor_3 = TRUE)
+            THEN
+                estado_i := votacao
+            END
+        END
+        
     END
-//    PRE
-//        estado = preparacao
-//        & candidatos /= {}
-//    THEN
-//       estado := votacao
-//    END
     ;
 
     
     votar ( cpf, zona, cpf_candidato)=
     BEGIN
-        IF cpf_candidato : candidatos & cpf_candidato : dom(votos) & (votos(cpf_candidato) + 1) : NAT
-        THEN
-            votos := votos <+ { cpf_candidato |-> ( votos(cpf_candidato) + 1 ) }
-        END;
-        registro(cpf) := TRUE
+        VAR ee, ii, oo, uu IN
+            ii := eleitores_i(cpf);
+            oo := candidatos_i(cpf_candidato);
+            uu := registro_i(cpf);
+            ee := local_i(cpf)(zona);
+            IF (ii = TRUE) & (ee = TRUE) & (uu = FALSE)
+            THEN
+                IF (oo = TRUE)
+                THEN
+                    votos_i(cpf_candidato) := votos_i(cpf_candidato) +1
+                END;
+                registro_i(cpf) := TRUE
+            END
+        END
     END
-//    PRE
-//        estado = votacao
-//        & cpf : CPFs
-//        & cpf : eleitores
-//        & cpf /= indefinido
-//        & zona : ZONAS
-//        & cpf : dom(local)
-//        & cpf : dom(registro)
-//        & zona = local(cpf)
-//        & cpf_candidato : CPFs
-//        & (cpf_candidato : (candidatos \/ { indefinido} ))
-//        & registro(cpf) = FALSE
-//    THEN
-//        IF cpf_candidato : candidatos & cpf_candidato : dom(votos) & (votos(cpf_candidato) + 1) : NAT
-//        THEN
-//            votos := votos <+ { cpf_candidato |-> ( votos(cpf_candidato) + 1 ) }
-//        END
-//        || registro(cpf) := TRUE
-//    END
     ;
 
     
     concluir_votacao =
     BEGIN
-        estado := apuracao
+        IF (estado_i = votacao)
+        THEN
+            estado_i := apuracao
+        END
     END
-//    PRE
-//        estado = votacao
-//    THEN
-//       estado := apuracao
-//    END
     ;
 
     
     resultado <-- apurar_vencedor =
     BEGIN
-        IF # vencedor . (vencedor : candidatos & vencedor : dom(votos) & ( ! aa . ( aa : candidatos & aa /= vencedor => votos(vencedor) > votos(aa))) & (votos(vencedor) > ((SIGMA ee . ( ee : ran(votos) | ee ))/2 )) )
-        THEN
-            resultado := {venc | # vencedor . (vencedor : candidatos & vencedor : dom(votos) & ( ! aa . ( aa : candidatos & aa /= vencedor => votos(vencedor) > votos(aa))) & (votos(vencedor) > ((SIGMA ee . ( ee : ran(votos) | ee ))/2 )) & venc = vencedor) }
-        ELSE
-            resultado := {indefinido}
+        VAR cand_1, cand_2, cand_3 IN
+            cand_1 := votos_i(cpf1);
+            cand_2 := votos_i(cpf2);
+            cand_3 := votos_i(cpf3);
+            
+            IF (cand_1 > cand_2) & (cand_1 > cand_3)
+            THEN
+                resultado := cpf1
+            ELSE IF (cand_2 > cand_1) & (cand_2 > cand_3)
+                THEN
+                    resultado := cpf2
+                ELSE IF (cand_3 > cand_1) & (cand_3 > cand_2)
+                        THEN
+                            resultado := cpf3
+                    ELSE
+                        resultado := indefinido
+                    END
+                END
+            END
         END
     END
-//    PRE
-//        estado = apuracao
-//    THEN
-//        IF # vencedor . (vencedor : candidatos & vencedor : dom(votos) & ( ! aa . ( aa : candidatos & aa /= vencedor => votos(vencedor) > votos(aa))) & (votos(vencedor) > ((SIGMA ee . ( ee : ran(votos) | ee ))/2 )) )
-//        THEN
-//            resultado := {venc | # vencedor . (vencedor : candidatos & vencedor : dom(votos) & ( ! aa . ( aa : candidatos & aa /= vencedor => votos(vencedor) > votos(aa))) & (votos(vencedor) > ((SIGMA ee . ( ee : ran(votos) | ee ))/2 )) & venc = vencedor) }
-//        ELSE
-//            resultado := {indefinido}
-//        END
-//
-//    END
 
  END

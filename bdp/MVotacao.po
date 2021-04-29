@@ -1,15 +1,15 @@
 THEORY ProofList IS
-_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.6,(_f(73) & _f(113) & _f(112) & _f(111) & _f(99) => _f(116));
-_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.5,(_f(73) & _f(113) & _f(112) & _f(111) & _f(99) => _f(115));
-_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.4,(_f(73) & _f(113) & _f(112) & _f(111) & _f(99) => _f(107));
-_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.3,(_f(113) & _f(112) & _f(111) & _f(99) => _f(116));
-_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.2,(_f(113) & _f(112) & _f(111) & _f(99) => _f(115));
-_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.1,(_f(113) & _f(112) & _f(111) & _f(99) => _f(107));
-_f(1) & _f(2) & _f(22) & _f(61) & WellDefinedness_votar.2,(_f(64) & _f(65) & _f(66) & _f(99) => _f(107));
-_f(1) & _f(2) & _f(22) & _f(61) & WellDefinedness_votar.1,(_f(64) & _f(65) & _f(99) => _f(107));
-_f(1) & _f(2) & _f(22) & WellDefinedness_Precondition_votar.2,(_f(70) & _f(95) & _f(96) & _f(101) & _f(93) & _f(98) & _f(105) & _f(104) & _f(103) & _f(102) & _f(99) => _f(106));
-_f(1) & _f(2) & _f(22) & WellDefinedness_Precondition_votar.1,(_f(70) & _f(95) & _f(96) & _f(101) & _f(93) & _f(98) & _f(105) & _f(99) => _f(100));
-_f(1) & _f(2) & _f(22) & WellDefinedness_Precondition_mudar_local.1,(_f(27) & _f(95) & _f(96) & _f(98) & _f(93) & _f(99) => _f(100));
+_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.6,(_f(76) & _f(77) & _f(78) & _f(79) & _f(104) => _f(119));
+_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.5,(_f(76) & _f(77) & _f(78) & _f(79) & _f(104) => _f(118));
+_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.4,(_f(76) & _f(77) & _f(78) & _f(79) & _f(104) => _f(112));
+_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.3,(_f(76) & _f(77) & _f(78) & _f(104) => _f(117));
+_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.2,(_f(76) & _f(77) & _f(78) & _f(104) => _f(116));
+_f(1) & _f(2) & _f(22) & _f(72) & WellDefinedness_apurar_vencedor.1,(_f(76) & _f(77) & _f(78) & _f(104) => _f(112));
+_f(1) & _f(2) & _f(22) & _f(61) & WellDefinedness_votar.2,(_f(64) & _f(65) & _f(66) & _f(104) => _f(112));
+_f(1) & _f(2) & _f(22) & _f(61) & WellDefinedness_votar.1,(_f(64) & _f(65) & _f(104) => _f(112));
+_f(1) & _f(2) & _f(22) & WellDefinedness_Precondition_votar.2,(_f(70) & _f(100) & _f(101) & _f(106) & _f(98) & _f(103) & _f(110) & _f(109) & _f(108) & _f(107) & _f(104) => _f(111));
+_f(1) & _f(2) & _f(22) & WellDefinedness_Precondition_votar.1,(_f(70) & _f(100) & _f(101) & _f(106) & _f(98) & _f(103) & _f(110) & _f(104) => _f(105));
+_f(1) & _f(2) & _f(22) & WellDefinedness_Precondition_mudar_local.1,(_f(27) & _f(100) & _f(101) & _f(103) & _f(98) & _f(104) => _f(105));
 _f(1) & _f(2) & _f(22) & _f(70) & concluir_votacao.2,(_f(60) & _f(71) & _f(9) => _f(21));
 _f(1) & _f(2) & _f(22) & _f(70) & concluir_votacao.1,(_f(58) & _f(71) & _f(9) => _f(20));
 _f(1) & _f(2) & _f(22) & _f(61) & votar.6,(_f(67) & _f(62) & _f(27) & _f(9) => _f(20));
@@ -136,8 +136,13 @@ not(((cpf_candidato) : (candidatos)) & ((cpf_candidato) : (dom(votos))) & ((((vo
 ((estado) = ((2|->ESTADO)));
 (((3|->ESTADO)) = ((1|->ESTADO)));
 ((estado) = ((3|->ESTADO)));
-#(vencedor).(((vencedor) : (candidatos)) & ((vencedor) : (dom(votos))) & !(aa).(((((aa) : (candidatos)) & not(aa = vencedor)) => (((votos )(aa) +1 <= (votos )(vencedor))))) & ((SIGMA(ee).(((ee) : (ran(votos))) | ee) / 2) +1 <= (votos )(vencedor)));
-not(#(vencedor).(((vencedor) : (candidatos)) & ((vencedor) : (dom(votos))) & !(aa).(((((aa) : (candidatos)) & not(aa = vencedor)) => (((votos )(aa) +1 <= (votos )(vencedor))))) & ((SIGMA(ee).(((ee) : (ran(votos))) | ee) / 2) +1 <= (votos )(vencedor))));
+((SIGMA(ss).(((ss) : (ran(votos))) | ss) / 2) +1 <= (votos )(cc));
+!(aa).(((((aa) : (candidatos)) & not(aa = cc)) => (((votos )(aa) +1 <= (votos )(cc)))));
+not(((SIGMA(ss).(((ss) : (ran(votos))) | ss) / 2) +1 <= (votos )(cc)) & !(aa).(((((aa) : (candidatos)) & not(aa = cc)) => (((votos )(aa) +1 <= (votos )(cc))))));
+((cc) : (candidatos));
+((cc) : (dom(votos)));
+((((ran(votos)) /\ (NAT))) : (FIN(NAT)));
+(((votos )(cc)) = (max(ran(votos))));
 btrue;
 ((((aa) : (eleitores))) => (btrue));
 ((((ee) : (candidatos))) => (btrue));
@@ -171,14 +176,12 @@ not(cpf = (4|->CPFs));
 ((cpf) : (dom(registro)));
 ((registro) : (((dom(registro)) +-> (ran(registro)))));
 ((votos) : (((dom(votos)) +-> (ran(votos)))));
+((ss) : (ran(votos)));
 ((((aa) : (candidatos))) => (btrue));
-((((aa) : (candidatos)) & not(aa = vencedor)) => (((vencedor) : (dom(votos))) & ((votos) : (((dom(votos)) +-> (ran(votos))))) & ((aa) : (dom(votos))) & ((votos) : (((dom(votos)) +-> (ran(votos)))))));
-((ee) : (ran(votos)));
-!(aa).(((((aa) : (candidatos)) & not(aa = vencedor)) => (((votos )(aa) +1 <= (votos )(vencedor)))));
-((vencedor) : (dom(votos)));
-((vencedor) : (candidatos));
-((SIGMA(ee).(((ee) : (ran(votos))) | ee) / 2) +1 <= (votos )(vencedor));
-((SET(ee).(((ee) : (ran(votos))))) : (FIN(SET(ee).(((ee) : (ran(votos)))))));
+((((aa) : (candidatos)) & not(aa = cc)) => (((cc) : (dom(votos))) & ((votos) : (((dom(votos)) +-> (ran(votos))))) & ((aa) : (dom(votos))) & ((votos) : (((dom(votos)) +-> (ran(votos)))))));
+not(((ran(votos)) = ({})));
+((((ran(votos)) /\ (NATURAL))) : (FIN(NATURAL)));
+((SET(ss).(((ss) : (ran(votos))))) : (FIN(SET(ss).(((ss) : (ran(votos)))))));
 not(((2) = (0)))
 END
 &

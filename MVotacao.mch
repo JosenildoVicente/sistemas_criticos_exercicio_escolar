@@ -148,17 +148,26 @@ OPERATIONS
     END
     ;
     
-    resultado <-- apurar_vencedor =
+    
+    resultado <-- apurar_vencedor=
     PRE
         estado = apuracao
     THEN
-        IF # vencedor . (vencedor : candidatos & vencedor : dom(votos) & ( ! aa . ( aa : candidatos & aa /= vencedor => votos(vencedor) > votos(aa))) & (votos(vencedor) > ((SIGMA ee . ( ee : ran(votos) | ee ))/2 )) )
+        ANY cc 
+        WHERE  
+            cc : candidatos
+            & cc : dom(votos)
+            & ran(votos) /\ NAT : FIN(NAT)
+            & votos(cc) = max(ran(votos))
         THEN
-            resultado := {venc | # vencedor . (vencedor : candidatos & vencedor : dom(votos) & ( ! aa . ( aa : candidatos & aa /= vencedor => votos(vencedor) > votos(aa))) & (votos(vencedor) > ((SIGMA ee . ( ee : ran(votos) | ee ))/2 )) & venc = vencedor) }
-        ELSE
-            resultado := {indefinido}
+            IF (votos(cc) > (SIGMA ss . (ss : ran(votos) | ss)) / 2 ) & ( ! aa . ( aa : candidatos & aa /= cc => votos(cc) > votos(aa)))
+            THEN
+               resultado := cc
+            ELSE
+                resultado := indefinido
+            END
         END
-
+            
     END
 
 END
