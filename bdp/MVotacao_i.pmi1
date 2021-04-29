@@ -1,5 +1,5 @@
 ﻿THEORY BalanceX IS
-  MVotacao_i,105,0,0,97,0,0,0;
+  MVotacao_i,103,0,0,96,0,0,0;
   Initialisation,3,0,0,3,0,0,0;
   WellDefinedness_adicionar_candidato,4,0,0,4,0,0,0;
   WellDefinedness_adicionar_eleitor,4,0,0,4,0,0,0;
@@ -11,7 +11,7 @@
   WellDefinedness_votar,12,0,0,12,0,0,0;
   adicionar_candidato,4,0,0,4,0,0,0;
   adicionar_eleitor,5,0,0,5,0,0,0;
-  apurar_vencedor,13,0,0,8,0,0,0;
+  apurar_vencedor,11,0,0,7,0,0,0;
   iniciar_votacao,3,0,0,3,0,0,0;
   mudar_local,3,0,0,2,0,0,0;
   remover_candidato,4,0,0,4,0,0,0;
@@ -60,8 +60,6 @@ THEORY ProofState IS
   Proved(0);
   Proved(0);
   Proved(0);
-  Proved(0);
-  Unproved;
   Proved(0);
   Proved(0);
   Proved(0);
@@ -169,8 +167,6 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
-  ?;
-  pr;
   pr;
   pr;
   pr;
@@ -276,8 +272,6 @@ THEORY PassList IS
   Force(0),?;
   Force(0),?;
   Force(0),?;
-  Force(0),?;
-  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
   Force(0),?;

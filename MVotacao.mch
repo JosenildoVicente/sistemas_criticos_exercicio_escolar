@@ -128,9 +128,7 @@ OPERATIONS
         & zona = local(cpf)
         & cpf_candidato : CPFs
         & (cpf_candidato : (candidatos \/ { indefinido} ))
-//        & cpf_candidato : dom(votos)
         & registro(cpf) = FALSE
-//        & {cpf_candidato |-> votos(cpf_candidato) + 1} : candidatos +-> NAT
     THEN
         IF cpf_candidato : candidatos & cpf_candidato : dom(votos) & (votos(cpf_candidato) + 1) : NAT
         THEN
@@ -171,3 +169,30 @@ OPERATIONS
     END
 
 END
+
+/*
+
+                        Obrigações de provas não provadas automáticamente:
+
+- remover_eleitor.9
+    cpf : candidatos & btrue & oo : ran({cpf} <<| registro) & estado = preparacao  => oo = FALSE
+justificativa: 
+    Ele não consegue provar que o registro do eleitor fica falso quando ele é removido, só que não fica falso, está sendo excluido o registro, logo não fica nem falso nem verdadeiro.
+
+- remover_eleitor.16
+    not(cpf : candidatos) & btrue & oo : ran({cpf} <<| registro) & estado = preparacao  => oo = FALSE
+justificativa:
+    Mesma situação da obrigação acima: Não consegue provar que o registro do eleitor fica falso quando ele é removido, só que não fica falso, está sendo excluido o registro, logo não fica nem falso nem verdadeiro.
+
+- remover_eleitor.10
+cpf : candidatos &
+    btrue & uu : ran({cpf} <<| votos) & estado = preparacao  => uu = 0
+justificativa:
+    Ele não consegue provar que os votos do eleitor que é candidato fica zerado quando ele é removido, só que não fica zerado, está sendo excluido o cpf de votos, logo não fica zerado nem com nenhum outro valor.
+
+- remover_candidato.5
+    btrue & uu : ran({cpf} <<| votos) & estado = preparacao  => uu = 0
+justificativa:
+     Mesmo caso a obrigação acima em que: Ele não consegue provar que os votos do candidato fica zerado quando ele é removido, só que não fica zerado, está sendo excluido o cpf de votos, logo não fica zerado nem com nenhum outro valor.
+     
+*/

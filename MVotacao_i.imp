@@ -30,7 +30,7 @@ INITIALISATION
     estado_i := preparacao;
     eleitores_i := CPFs * {FALSE};
     candidatos_i := CPFs * {FALSE};
-    local_i := CPFs * {ZONAS * {FALSE}};
+    local_i := CPFs * {(ZONAS * {FALSE})};
     votos_i := CPFs * {0};
     registro_i := CPFs * {FALSE} 
     
@@ -188,3 +188,46 @@ OPERATIONS
     END
 
  END
+ 
+
+/*
+
+                     Obrigações de provas não provadas automáticamente:
+
+- mudar_local.1
+    estado = preparacao & cpf : CPFs & cpf : eleitores & cpf : dom(local) & zona : ZONAS & zona /= local(cpf) & cpf /= indefinido & btrue & eleitores_i$1(cpf) = TRUE & btrue  => local_i$1 <+ {cpf |-> ZONAS * {FALSE}} <+ {cpf |-> ((local_i$1 <+ {cpf |-> ZONAS * {FALSE}})(cpf) <+ {zona |-> TRUE})} : CPFs --> (ZONAS --> BOOL)
+justificativa: 
+    Acredito que ele não consegue linkar o que acontece na operação na maquina abstrata com o que acontece aqui na implementação. Nessa operação esta sendo setados todas as zonas do eleitor como False para depois colocar a zone que quer como True, com isso acaba encadeando a sobrescrita.
+
+- votar.1
+    estado = votacao & cpf : CPFs & cpf : eleitores & cpf /= indefinido & zona : ZONAS & cpf : dom(local) & cpf : dom(registro) & zona = local(cpf) & cpf_candidato : CPFs & cpf_candidato : candidatos \/ {indefinido} & registro(cpf) = FALSE & btrue & eleitores_i$1(cpf) = TRUE & local_i$1(cpf)(zona) = TRUE & registro_i$1(cpf) = FALSE & candidatos_i$1(cpf_candidato) = TRUE & btrue & cpf_candidato : candidatos & cpf_candidato : dom(votos) & votos(cpf_candidato) + 1 : NAT => votos_i$1 <+ {cpf_candidato |-> votos_i$1(cpf_candidato) + 1} : CPFs --> NAT
+justificativa: 
+    Ele não consegue provar que a soma ( votos_i(cpf_candidato) +1 ) é um NAT, e a soma de um NAT com outro NAT resulta num NAT!
+
+- votar.3
+    estado = votacao & cpf : CPFs & cpf : eleitores & cpf /= indefinido & zona : ZONAS & cpf : dom(local) & cpf : dom(registro) & zona = local(cpf) & cpf_candidato : CPFs & cpf_candidato : candidatos \/ {indefinido} & registro(cpf) = FALSE & btrue & eleitores_i$1(cpf) = TRUE & local_i$1(cpf)(zona) = TRUE & registro_i$1(cpf) = FALSE & candidatos_i$1(cpf_candidato) = TRUE & btrue & not(cpf_candidato : candidatos & cpf_candidato : dom(votos) & votos(cpf_candidato) + 1 : NAT) => votos_i$1 <+ {cpf_candidato |-> votos_i$1(cpf_candidato) + 1} : CPFs --> NAT
+justificativa: 
+    Essa obrigação de prova é parecida com a de cima, porém ele quer que seja provado que não vai dar nenhum problema de restrição quando fazer a soma do voto sem ter sido passado no IF da operação da maquina abstrata, só que as condições na operação aqui na implementação já garantem que nao vai ser somado o voto quando não passa no IF da maquina abstrata pois as condições da maquina abstrata estão sendo feitas na operação da implementação.
+
+- apurar_vencedor.1
+    *muito grande pra colar a OP*
+justificativa: 
+    Ele não prova que cpf é um candidato, nem que cpf faz parte do domínio de votos e outras coisas. Acontece que votos_i é inicializado com valor 0 para todos os CPFs, logo se um CPF não for candidato ele terá valor 0, logo como o resultado é o que tiver mais votos ou indefinido, o CPF que não for candidato terá quantidade de votos 0 então ele nunca será escolhido para ser o resultado ( o ganhador da eleição), tendo isso, se CPF não for um eleitor e candidato (não estiver setado como TRUE nas variáveis) não será nunca o resultado da operação!
+
+- apurar_vencedor.3
+    *muito grande pra colar a OP*
+justificativa: 
+    A justificativa é a mesma de apurar_vencedor.1 pois é exatamente o mesmo caso!
+
+- apurar_vencedor.5
+    *muito grande pra colar a OP*
+justificativa: 
+    A justificativa é a mesma de apurar_vencedor.1 pois é exatamente o mesmo caso!
+    
+- apurar_vencedor.7
+    *muito grande pra colar a OP*
+justificativa: 
+    A justificativa é a mesma de apurar_vencedor.1 pois é exatamente o mesmo caso!
+    
+    
+*/
